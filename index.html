@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImmigrantTax.ai — Cross-Border Tax Made Simple</title>
+    <meta name="description" content="AI-powered tax advisor for immigrants. Know exactly what to file, where to file, and when — across every country you've lived in.">
+    <meta property="og:title" content="ImmigrantTax.ai — Cross-Border Tax Made Simple">
+    <meta property="og:description" content="Stop overpaying for cross-border tax advice. Get your personalized multi-country tax checklist in 5 minutes.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d' },
+                        dark: { 800: '#1e1e2e', 900: '#11111b', 950: '#0a0a14' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #22c55e, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glow { box-shadow: 0 0 60px rgba(34, 197, 94, 0.15); }
+        .step-card:hover { transform: translateY(-4px); }
+        .step-card { transition: transform 0.2s ease; }
+        #analyzer { scroll-margin-top: 2rem; }
+    </style>
+</head>
+<body class="bg-dark-950 text-gray-100 antialiased">
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-dark-950/80 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">🌍</span>
+                <span class="font-bold text-lg">ImmigrantTax<span class="text-brand-500">.ai</span></span>
+            </div>
+            <a href="#analyzer" class="bg-brand-600 hover:bg-brand-500 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors">
+                Get Your Checklist →
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-brand-900/30 border border-brand-700/30 rounded-full px-4 py-1.5 text-sm text-brand-400 mb-8">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                Tax season 2026 — Don't miss your deadlines
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                Stop overpaying for<br><span class="gradient-text">cross-border tax advice.</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                ImmigrantTax.ai tells you <strong class="text-gray-200">exactly what to file, where to file, and when</strong> — across every country you've lived in. In 5 minutes. For free.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#analyzer" class="bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-colors glow">
+                    Get Your Free Tax Checklist →
+                </a>
+                <a href="#how-it-works" class="border border-white/10 hover:border-white/20 text-gray-300 px-8 py-4 rounded-xl text-lg font-medium transition-colors">
+                    How It Works
+                </a>
+            </div>
+            <p class="text-sm text-gray-500 mt-4">No signup required. No financial data stored.</p>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Sound familiar?</h2>
+            <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">If you've moved countries, tax season is a special kind of hell.</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6">
+                    <div class="text-3xl mb-4">😰</div>
+                    <h3 class="font-semibold text-lg mb-2">"Do I file in both countries?"</h3>
+                    <p class="text-gray-400 text-sm">You earned income in your home country AND your new country. Nobody can give you a straight answer on what goes where.</p>
+                </div>
+                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6">
+                    <div class="text-3xl mb-4">💸</div>
+                    <h3 class="font-semibold text-lg mb-2">"My CPA quoted me $3,000"</h3>
+                    <p class="text-gray-400 text-sm">Cross-border tax specialists are expensive. And they still need YOU to figure out half the paperwork.</p>
+                </div>
+                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6">
+                    <div class="text-3xl mb-4">📋</div>
+                    <h3 class="font-semibold text-lg mb-2">"What even is Form 8938?"</h3>
+                    <p class="text-gray-400 text-sm">FBAR, FATCA, T1135, Form 67... The alphabet soup of cross-border reporting is enough to make anyone panic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="how-it-works" class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">How it works</h2>
+            <p class="text-gray-400 text-center mb-12">Three steps. Five minutes. Zero confusion.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="step-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-900/40 border border-brand-700/30 flex items-center justify-center text-2xl mx-auto mb-4">1</div>
+                    <h3 class="font-semibold text-lg mb-2">Tell us your story</h3>
+                    <p class="text-gray-400 text-sm">Which countries have you lived in? Where do you earn income? What assets do you hold abroad? Quick, simple questions.</p>
+                </div>
+                <div class="step-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-900/40 border border-brand-700/30 flex items-center justify-center text-2xl mx-auto mb-4">2</div>
+                    <h3 class="font-semibold text-lg mb-2">AI analyzes your situation</h3>
+                    <p class="text-gray-400 text-sm">Our AI cross-references tax treaties, residency rules, and reporting thresholds across all your countries. Instantly.</p>
+                </div>
+                <div class="step-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-900/40 border border-brand-700/30 flex items-center justify-center text-2xl mx-auto mb-4">3</div>
+                    <h3 class="font-semibold text-lg mb-2">Get your checklist</h3>
+                    <p class="text-gray-400 text-sm">A personalized action plan: which forms, which countries, which deadlines, and where to find help for complex cases.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Props -->
+    <section class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
+                    <div class="text-3xl mb-4">🌍</div>
+                    <h3 class="font-bold text-xl mb-3">50+ countries covered</h3>
+                    <p class="text-gray-400">US, Canada, India, UK, Germany, Australia, UAE, Nigeria, Philippines — wherever you're from or going, we've got the rules mapped.</p>
+                </div>
+                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
+                    <div class="text-3xl mb-4">🤖</div>
+                    <h3 class="font-bold text-xl mb-3">AI that understands immigration</h3>
+                    <p class="text-gray-400">Not generic tax software. Built specifically for people who've moved countries and face multi-jurisdiction complexity.</p>
+                </div>
+                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
+                    <div class="text-3xl mb-4">💰</div>
+                    <h3 class="font-bold text-xl mb-3">Save $2,000+ per year</h3>
+                    <p class="text-gray-400">Cross-border CPAs charge thousands. Get the same clarity about your obligations — for free during our beta.</p>
+                </div>
+                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
+                    <div class="text-3xl mb-4">🔒</div>
+                    <h3 class="font-bold text-xl mb-3">Your data stays yours</h3>
+                    <p class="text-gray-400">We don't store financial data. No SSN, no tax returns, no bank info. Just your situation profile to generate your checklist.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tax Analyzer (Interactive) -->
+    <section id="analyzer" class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Your Tax Situation Analyzer</h2>
+            <p class="text-gray-400 text-center mb-10">Answer a few questions and get your personalized cross-border tax checklist.</p>
+
+            <div id="quiz-container" class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
+                <!-- Step indicators -->
+                <div class="flex justify-between mb-8">
+                    <div class="flex items-center gap-2" id="step-indicators"></div>
+                    <span class="text-sm text-gray-500" id="step-counter">Step 1 of 6</span>
+                </div>
+
+                <!-- Questions -->
+                <div id="question-area"></div>
+
+                <!-- Navigation -->
+                <div class="flex justify-between mt-8">
+                    <button id="btn-prev" onclick="prevStep()" class="text-gray-400 hover:text-white transition-colors text-sm hidden">← Back</button>
+                    <button id="btn-next" onclick="nextStep()" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors ml-auto">Next →</button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div id="results-area" class="hidden"></div>
+        </div>
+    </section>
+
+    <!-- CPA Comparison -->
+    <section class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-12">Why immigrants choose us</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="border-b border-white/10">
+                            <th class="py-4 px-4 text-gray-400 font-medium"></th>
+                            <th class="py-4 px-4 text-gray-400 font-medium">Cross-Border CPA</th>
+                            <th class="py-4 px-4 text-gray-400 font-medium">TurboTax / Wealthsimple</th>
+                            <th class="py-4 px-4 font-medium text-brand-400">ImmigrantTax.ai</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-white/5">
+                            <td class="py-4 px-4 text-gray-300">Multi-country support</td>
+                            <td class="py-4 px-4">✅ Manual</td>
+                            <td class="py-4 px-4">❌</td>
+                            <td class="py-4 px-4 text-brand-400">✅ AI-powered</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="py-4 px-4 text-gray-300">Cost</td>
+                            <td class="py-4 px-4">$2,000-5,000+</td>
+                            <td class="py-4 px-4">$0-130</td>
+                            <td class="py-4 px-4 text-brand-400">Free (beta)</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="py-4 px-4 text-gray-300">Time to answers</td>
+                            <td class="py-4 px-4">Days-weeks</td>
+                            <td class="py-4 px-4">Hours</td>
+                            <td class="py-4 px-4 text-brand-400">5 minutes</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="py-4 px-4 text-gray-300">Treaty analysis</td>
+                            <td class="py-4 px-4">✅</td>
+                            <td class="py-4 px-4">❌</td>
+                            <td class="py-4 px-4 text-brand-400">✅ Automated</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 text-gray-300">Immigration-aware</td>
+                            <td class="py-4 px-4">Sometimes</td>
+                            <td class="py-4 px-4">❌</td>
+                            <td class="py-4 px-4 text-brand-400">✅ Built for it</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist CTA -->
+    <section class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">Join the waitlist</h2>
+            <p class="text-gray-400 mb-8">Be first to get the full AI tax advisor when we launch. Early access members get lifetime free access.</p>
+            <div id="waitlist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input type="email" id="waitlist-email" placeholder="your@email.com" class="flex-1 bg-dark-800 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors">
+                <button onclick="joinWaitlist()" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors whitespace-nowrap">
+                    Join Waitlist
+                </button>
+            </div>
+            <div id="waitlist-success" class="hidden text-brand-400 mt-4">
+                ✅ You're on the list! We'll be in touch.
+            </div>
+            <p class="text-xs text-gray-600 mt-3">No spam. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span>🌍</span>
+                <span class="font-semibold">ImmigrantTax<span class="text-brand-500">.ai</span></span>
+            </div>
+            <p class="text-sm text-gray-500">Built by <a href="https://opensphere.ai" class="text-gray-400 hover:text-white transition-colors">OpenSphere</a> · Not tax advice. Consult a professional for your specific situation.</p>
+            <div class="flex gap-6 text-sm text-gray-500">
+                <a href="https://legalbridge.ai" class="hover:text-white transition-colors">LegalBridge.ai</a>
+                <a href="https://twitter.com/atalovesyou" class="hover:text-white transition-colors">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                id: 'current_country',
+                question: 'Where do you currently live?',
+                subtitle: 'Your primary country of tax residence',
+                type: 'select',
+                options: ['United States', 'Canada', 'United Kingdom', 'Germany', 'Australia', 'India', 'UAE', 'Singapore', 'Netherlands', 'France', 'Ireland', 'Other']
+            },
+            {
+                id: 'home_country',
+                question: 'What\'s your home country (country of citizenship)?',
+                subtitle: 'Where you hold citizenship or permanent residency',
+                type: 'select',
+                options: ['India', 'China', 'Nigeria', 'Philippines', 'Mexico', 'Brazil', 'Pakistan', 'Bangladesh', 'United Kingdom', 'Canada', 'United States', 'Other']
+            },
+            {
+                id: 'years_abroad',
+                question: 'How long have you been in your current country?',
+                type: 'select',
+                options: ['Less than 1 year', '1-3 years', '3-5 years', '5-10 years', '10+ years']
+            },
+            {
+                id: 'income_sources',
+                question: 'Where do you earn income?',
+                subtitle: 'Select all that apply',
+                type: 'multi',
+                options: ['Salary in current country', 'Freelance/contract work (international)', 'Rental income in home country', 'Investment income (stocks, mutual funds)', 'Business income in home country', 'Pension or retirement accounts', 'Cryptocurrency']
+            },
+            {
+                id: 'foreign_assets',
+                question: 'Do you have financial assets abroad?',
+                subtitle: 'Bank accounts, property, investments in another country',
+                type: 'multi',
+                options: ['Bank accounts in home country', 'Property/real estate abroad', 'Foreign retirement accounts (PPF, EPF, NPS, etc.)', 'Foreign stocks or mutual funds', 'Foreign business ownership', 'None of the above']
+            },
+            {
+                id: 'visa_status',
+                question: 'What\'s your immigration status?',
+                type: 'select',
+                options: ['Work visa (H-1B, TN, Tier 2, etc.)', 'Student visa (F-1, Study permit)', 'Permanent resident / Green card', 'Citizen (naturalized)', 'Work permit (open/closed)', 'Digital nomad / Remote worker', 'Other']
+            }
+        ];
+
+        let currentStep = 0;
+        let answers = {};
+
+        function renderStep() {
+            const q = questions[currentStep];
+            const area = document.getElementById('question-area');
+            document.getElementById('step-counter').textContent = `Step ${currentStep + 1} of ${questions.length}`;
+            document.getElementById('btn-prev').classList.toggle('hidden', currentStep === 0);
+            document.getElementById('btn-next').textContent = currentStep === questions.length - 1 ? 'Get My Checklist →' : 'Next →';
+
+            let html = `<h3 class="text-xl font-semibold mb-2">${q.question}</h3>`;
+            if (q.subtitle) html += `<p class="text-gray-400 text-sm mb-6">${q.subtitle}</p>`;
+            else html += '<div class="mb-6"></div>';
+
+            if (q.type === 'select') {
+                html += '<div class="grid grid-cols-2 gap-3">';
+                q.options.forEach(opt => {
+                    const selected = answers[q.id] === opt;
+                    html += `<button onclick="selectOption('${q.id}', '${opt}', this)" class="text-left px-4 py-3 rounded-lg border ${selected ? 'border-brand-500 bg-brand-900/30 text-brand-400' : 'border-white/10 hover:border-white/20 text-gray-300'} transition-colors text-sm">${opt}</button>`;
+                });
+                html += '</div>';
+            } else if (q.type === 'multi') {
+                const selected = answers[q.id] || [];
+                html += '<div class="grid grid-cols-1 gap-3">';
+                q.options.forEach(opt => {
+                    const isSelected = selected.includes(opt);
+                    html += `<button onclick="toggleMulti('${q.id}', '${opt}', this)" class="text-left px-4 py-3 rounded-lg border ${isSelected ? 'border-brand-500 bg-brand-900/30 text-brand-400' : 'border-white/10 hover:border-white/20 text-gray-300'} transition-colors text-sm flex items-center gap-3"><span class="w-5 h-5 rounded border ${isSelected ? 'border-brand-500 bg-brand-500' : 'border-white/20'} flex items-center justify-center text-xs">${isSelected ? '✓' : ''}</span>${opt}</button>`;
+                });
+                html += '</div>';
+            }
+            area.innerHTML = html;
+        }
+
+        function selectOption(id, value) {
+            answers[id] = value;
+            renderStep();
+        }
+
+        function toggleMulti(id, value) {
+            if (!answers[id]) answers[id] = [];
+            const idx = answers[id].indexOf(value);
+            if (idx > -1) answers[id].splice(idx, 1);
+            else answers[id].push(value);
+            renderStep();
+        }
+
+        function nextStep() {
+            if (currentStep < questions.length - 1) {
+                currentStep++;
+                renderStep();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                renderStep();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            const results = document.getElementById('results-area');
+            results.classList.remove('hidden');
+
+            const current = answers.current_country || 'your current country';
+            const home = answers.home_country || 'your home country';
+            const incomes = answers.income_sources || [];
+            const assets = answers.foreign_assets || [];
+            const visa = answers.visa_status || '';
+
+            let forms = [];
+            let deadlines = [];
+            let warnings = [];
+
+            // US-specific
+            if (current === 'United States') {
+                forms.push({ form: 'Form 1040 / 1040-NR', country: '🇺🇸 US', desc: 'Federal income tax return' });
+                if (assets.some(a => a.includes('Bank accounts') || a.includes('Foreign'))) {
+                    forms.push({ form: 'FinCEN 114 (FBAR)', country: '🇺🇸 US', desc: 'Foreign bank account report — required if combined foreign accounts exceed $10,000 at any point' });
+                    forms.push({ form: 'Form 8938 (FATCA)', country: '🇺🇸 US', desc: 'Statement of specified foreign financial assets — thresholds vary by filing status' });
+                }
+                deadlines.push({ date: 'April 15, 2026', item: 'US federal tax return & FBAR' });
+                deadlines.push({ date: 'October 15, 2026', item: 'Extended deadline (if filed extension)' });
+            }
+
+            // Canada-specific
+            if (current === 'Canada') {
+                forms.push({ form: 'T1 General', country: '🇨🇦 Canada', desc: 'Canadian income tax return' });
+                if (assets.some(a => a.includes('Bank accounts') || a.includes('Foreign') || a.includes('Property'))) {
+                    forms.push({ form: 'Form T1135', country: '🇨🇦 Canada', desc: 'Foreign income verification — required if foreign property costs exceed CAD $100,000' });
+                }
+                if (incomes.includes('Rental income in home country') || incomes.includes('Business income in home country')) {
+                    forms.push({ form: 'Form T2209', country: '🇨🇦 Canada', desc: 'Federal foreign tax credits — claim taxes paid to other countries' });
+                }
+                deadlines.push({ date: 'April 30, 2026', item: 'Canadian T1 tax return' });
+                deadlines.push({ date: 'June 15, 2026', item: 'Self-employed filing deadline (interest accrues from Apr 30)' });
+            }
+
+            // India-specific (if home country)
+            if (home === 'India') {
+                if (incomes.includes('Rental income in home country') || incomes.includes('Business income in home country') || assets.includes('Foreign stocks or mutual funds')) {
+                    forms.push({ form: 'ITR-2 or ITR-3', country: '🇮🇳 India', desc: 'Indian income tax return — required if you have Indian-source income' });
+                    forms.push({ form: 'Form 67', country: '🇮🇳 India', desc: 'Claim Double Taxation Avoidance Agreement (DTAA) relief' });
+                    deadlines.push({ date: 'July 31, 2026', item: 'India ITR filing deadline' });
+                }
+                warnings.push('India taxes based on residency (182 days rule). If you visited India for 182+ days, you may be considered a resident for tax purposes.');
+            }
+
+            // Treaty mention
+            let treatyNote = `A tax treaty likely exists between ${current} and ${home}. This may reduce or eliminate double taxation on certain income types.`;
+
+            let html = `
+                <div class="bg-dark-800/50 border border-brand-700/30 rounded-2xl p-8 glow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-brand-900/40 flex items-center justify-center text-2xl">✅</div>
+                        <div>
+                            <h3 class="text-xl font-bold">Your Cross-Border Tax Checklist</h3>
+                            <p class="text-gray-400 text-sm">${current} ↔ ${home} · ${visa}</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">📋 Forms You Likely Need</h4>
+                        <div class="space-y-3">
+                            ${forms.map(f => `
+                                <div class="bg-dark-900/50 rounded-lg p-4 border border-white/5">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <span class="font-mono text-brand-400 text-sm">${f.form}</span>
+                                            <span class="text-gray-500 text-xs ml-2">${f.country}</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-sm mt-1">${f.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">📅 Key Deadlines</h4>
+                        <div class="space-y-2">
+                            ${deadlines.map(d => `
+                                <div class="flex items-center gap-4 bg-dark-900/50 rounded-lg p-3 border border-white/5">
+                                    <span class="text-brand-400 font-mono text-sm whitespace-nowrap">${d.date}</span>
+                                    <span class="text-gray-300 text-sm">${d.item}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">🤝 Tax Treaty</h4>
+                        <p class="text-gray-400 text-sm bg-dark-900/50 rounded-lg p-4 border border-white/5">${treatyNote}</p>
+                    </div>
+
+                    ${warnings.length > 0 ? `
+                    <div class="mb-8">
+                        <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">⚠️ Watch Out</h4>
+                        ${warnings.map(w => `<p class="text-yellow-400/80 text-sm bg-yellow-900/10 border border-yellow-700/20 rounded-lg p-4">${w}</p>`).join('')}
+                    </div>
+                    ` : ''}
+
+                    <div class="bg-brand-900/20 border border-brand-700/20 rounded-xl p-6 text-center">
+                        <p class="text-gray-300 mb-3">Want the <strong>full AI-powered analysis</strong> with specific treaty articles, exemption amounts, and step-by-step filing guides?</p>
+                        <button onclick="document.getElementById('waitlist-email').focus(); document.querySelector('[href=\\'#analyzer\\']').click();" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                            Join the Waitlist for Full Access →
+                        </button>
+                        <p class="text-xs text-gray-500 mt-2">Launching soon with AI-powered deep analysis</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-6">
+                    <button onclick="resetQuiz()" class="text-gray-400 hover:text-white text-sm transition-colors">← Start over with different answers</button>
+                </div>
+            `;
+            results.innerHTML = html;
+            results.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            currentStep = 0;
+            answers = {};
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('results-area').classList.add('hidden');
+            renderStep();
+        }
+
+        function joinWaitlist() {
+            const email = document.getElementById('waitlist-email').value;
+            if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+
+            // Store locally (replace with real backend later)
+            const waitlist = JSON.parse(localStorage.getItem('immigranttax_waitlist') || '[]');
+            waitlist.push({ email, timestamp: new Date().toISOString(), answers });
+            localStorage.setItem('immigranttax_waitlist', JSON.stringify(waitlist));
+
+            document.getElementById('waitlist-form').classList.add('hidden');
+            document.getElementById('waitlist-success').classList.remove('hidden');
+        }
+
+        // Initialize
+        renderStep();
+    </script>
+</body>
+</html>
