@@ -9,7 +9,7 @@
       "url": "https://atalovesyou.github.io/immigranttax-ai/",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "Cross-border tax guidance for immigrants",
+      "description": "AI-powered cross-border tax analyzer for immigrants — 15+ countries, treaty database, residency tests, FBAR/FATCA/T1135 thresholds, PDF checklist export",
       "offers": {
             "@type": "Offer",
             "price": "0",
@@ -20,57 +20,64 @@
             "name": "OpenSphere Labs",
             "url": "https://atalovesyou.github.io/opensphere-labs/"
       }
-}
+    }
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ImmigrantTax.ai — Cross-Border Tax Made Simple</title>
-    <meta name="description" content="AI-powered tax advisor for immigrants. Know exactly what to file, where to file, and when — across every country you've lived in.">
+    <title>ImmigrantTax.ai — Cross-Border Tax Made Simple | 15+ Countries</title>
+    <meta name="description" content="AI-powered cross-border tax analyzer for immigrants. Real tax rules for 15+ countries, treaty database, residency tests, FBAR/FATCA thresholds, PDF export. Free.">
     <meta property="og:title" content="ImmigrantTax.ai — Cross-Border Tax Made Simple">
-    <meta property="og:description" content="Stop overpaying for cross-border tax advice. Get your personalized multi-country tax checklist in 5 minutes.">
+    <meta property="og:description" content="Stop overpaying for cross-border tax advice. Real tax rules for 15+ countries, treaty database, residency tests. Free.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://atalovesyou.github.io/immigranttax-ai/">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ImmigrantTax.ai — Cross-Border Tax Analyzer">
+    <meta name="twitter:description" content="15+ countries. Treaty database. Residency tests. FBAR/FATCA thresholds. PDF export. Free.">
+    <link rel="canonical" href="https://atalovesyou.github.io/immigranttax-ai/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d' },
-                        dark: { 800: '#1e1e2e', 900: '#11111b', 950: '#0a0a14' }
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
-        .gradient-text { background: linear-gradient(135deg, #22c55e, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-text { background: linear-gradient(135deg, #22c55e, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); }
         .glow { box-shadow: 0 0 60px rgba(34, 197, 94, 0.15); }
-        .step-card:hover { transform: translateY(-4px); }
-        .step-card { transition: transform 0.2s ease; }
-        #analyzer { scroll-margin-top: 2rem; }
+        .glow-cyan { box-shadow: 0 0 40px rgba(6, 182, 212, 0.12); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes pulse-green { 0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); } 70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); } }
+        .pulse-green { animation: pulse-green 2s infinite; }
+        .risk-low { border-left: 4px solid #22c55e; }
+        .risk-medium { border-left: 4px solid #eab308; }
+        .risk-high { border-left: 4px solid #ef4444; }
+        .risk-critical { border-left: 4px solid #dc2626; background: rgba(220,38,38,0.05); }
+        .step-dot { transition: all 0.3s; }
+        .step-dot.active { background: #22c55e; transform: scale(1.2); }
+        .step-dot.done { background: #16a34a; }
+        .opt-btn.selected { border-color: #22c55e; background: rgba(34,197,94,0.1); color: #4ade80; }
+        .tab-active { background: rgba(34,197,94,0.15); color: #4ade80; border-color: rgba(34,197,94,0.3); }
+        .tooltip { position: relative; }
+        .tooltip:hover::after { content: attr(data-tip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #1e293b; color: #e2e8f0; padding: 6px 10px; border-radius: 6px; font-size: 0.7rem; white-space: nowrap; z-index: 10; }
     </style>
-  <link rel="canonical" href="https://atalovesyou.github.io/immigranttax-ai/">
-  <meta property="og:image" content="https://atalovesyou.github.io/immigranttax-ai/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:image" content="https://atalovesyou.github.io/immigranttax-ai/og-image.png">
-  <meta property="og:url" content="https://atalovesyou.github.io/immigranttax-ai/">
 </head>
-<body class="bg-dark-950 text-gray-100 antialiased">
+<body class="bg-[#0a0a14] text-gray-200 antialiased">
 
     <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-dark-950/80 backdrop-blur-xl border-b border-white/5">
+    <nav class="fixed top-0 w-full z-50 bg-[#0a0a14]/80 backdrop-blur-xl border-b border-white/5">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <span class="text-2xl">🌍</span>
-                <span class="font-bold text-lg">ImmigrantTax<span class="text-brand-500">.ai</span></span>
+                <span class="font-bold text-lg">ImmigrantTax<span class="text-green-400">.ai</span></span>
             </div>
-            <a href="#analyzer" class="bg-brand-600 hover:bg-brand-500 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors">
-                Get Your Checklist →
+            <div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+                <a href="#analyzer" class="hover:text-white transition">Analyzer</a>
+                <a href="#treaties" class="hover:text-white transition">Treaties</a>
+                <a href="#residency" class="hover:text-white transition">Residency Test</a>
+                <a href="#pricing" class="hover:text-white transition">Plans</a>
+            </div>
+            <a href="#analyzer" class="bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-lg text-sm font-semibold transition">
+                Start Analysis →
             </a>
         </div>
     </nav>
@@ -78,48 +85,65 @@
     <!-- Hero -->
     <section class="pt-32 pb-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 bg-brand-900/30 border border-brand-700/30 rounded-full px-4 py-1.5 text-sm text-brand-400 mb-8">
-                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                Tax season 2026 — Don't miss your deadlines
+            <div class="inline-flex items-center gap-2 bg-green-900/30 border border-green-700/30 rounded-full px-4 py-1.5 text-sm text-green-400 mb-8">
+                <span class="w-2 h-2 rounded-full bg-green-500 pulse-green"></span>
+                v2.0 — 15+ Countries • Treaty Database • Residency Tests • PDF Export
             </div>
             <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
                 Stop overpaying for<br><span class="gradient-text">cross-border tax advice.</span>
             </h1>
             <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                ImmigrantTax.ai tells you <strong class="text-gray-200">exactly what to file, where to file, and when</strong> — across every country you've lived in. In 5 minutes. For free.
+                ImmigrantTax.ai tells you <strong class="text-gray-200">exactly what to file, where to file, and when</strong> — across every country you've lived in. Real tax rules. Real thresholds. Real deadlines.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#analyzer" class="bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-colors glow">
-                    Get Your Free Tax Checklist →
+                <a href="#analyzer" class="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl text-lg font-semibold transition glow">
+                    Get Your Free Tax Analysis →
                 </a>
-                <a href="#how-it-works" class="border border-white/10 hover:border-white/20 text-gray-300 px-8 py-4 rounded-xl text-lg font-medium transition-colors">
+                <a href="#how-it-works" class="border border-white/10 hover:border-white/20 text-gray-300 px-8 py-4 rounded-xl text-lg font-medium transition">
                     How It Works
                 </a>
             </div>
-            <p class="text-sm text-gray-500 mt-4">No signup required. No financial data stored.</p>
+            <p class="text-sm text-gray-500 mt-4">No signup required. No financial data stored. 100% client-side.</p>
+            <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
+                <div class="flex items-center gap-2"><span class="text-green-400">✓</span> 15+ Countries</div>
+                <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Treaty Database</div>
+                <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Residency Tests</div>
+                <div class="flex items-center gap-2"><span class="text-green-400">✓</span> PDF Export</div>
+                <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Free Forever</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="border-y border-white/5 py-8">
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div><div class="text-3xl font-bold text-white">15+</div><div class="text-sm text-gray-400 mt-1">Countries Covered</div></div>
+            <div><div class="text-3xl font-bold text-white">50+</div><div class="text-sm text-gray-400 mt-1">Tax Treaties Mapped</div></div>
+            <div><div class="text-3xl font-bold text-white">$2,400</div><div class="text-sm text-gray-400 mt-1">Avg CPA Cost Saved</div></div>
+            <div><div class="text-3xl font-bold text-white">5 min</div><div class="text-sm text-gray-400 mt-1">To Full Analysis</div></div>
         </div>
     </section>
 
     <!-- Pain Points -->
-    <section class="py-20 px-6 border-t border-white/5">
+    <section class="py-20 px-6">
         <div class="max-w-5xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-4">Sound familiar?</h2>
             <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">If you've moved countries, tax season is a special kind of hell.</p>
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6">
+                <div class="glass rounded-2xl p-6">
                     <div class="text-3xl mb-4">😰</div>
                     <h3 class="font-semibold text-lg mb-2">"Do I file in both countries?"</h3>
                     <p class="text-gray-400 text-sm">You earned income in your home country AND your new country. Nobody can give you a straight answer on what goes where.</p>
                 </div>
-                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6">
+                <div class="glass rounded-2xl p-6">
                     <div class="text-3xl mb-4">💸</div>
                     <h3 class="font-semibold text-lg mb-2">"My CPA quoted me $3,000"</h3>
                     <p class="text-gray-400 text-sm">Cross-border tax specialists are expensive. And they still need YOU to figure out half the paperwork.</p>
                 </div>
-                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-6">
+                <div class="glass rounded-2xl p-6">
                     <div class="text-3xl mb-4">📋</div>
                     <h3 class="font-semibold text-lg mb-2">"What even is Form 8938?"</h3>
-                    <p class="text-gray-400 text-sm">FBAR, FATCA, T1135, Form 67... The alphabet soup of cross-border reporting is enough to make anyone panic.</p>
+                    <p class="text-gray-400 text-sm">FBAR, FATCA, T1135, Form 67, SA109... The alphabet soup of cross-border reporting is enough to make anyone panic.</p>
                 </div>
             </div>
         </div>
@@ -131,125 +155,299 @@
             <h2 class="text-3xl font-bold text-center mb-4">How it works</h2>
             <p class="text-gray-400 text-center mb-12">Three steps. Five minutes. Zero confusion.</p>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="step-card text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-900/40 border border-brand-700/30 flex items-center justify-center text-2xl mx-auto mb-4">1</div>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-green-900/40 border border-green-700/30 flex items-center justify-center text-2xl mx-auto mb-4">1</div>
                     <h3 class="font-semibold text-lg mb-2">Tell us your story</h3>
-                    <p class="text-gray-400 text-sm">Which countries have you lived in? Where do you earn income? What assets do you hold abroad? Quick, simple questions.</p>
+                    <p class="text-gray-400 text-sm">Which countries? What income types? What visa status? How many days spent where? Quick, guided questions.</p>
                 </div>
-                <div class="step-card text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-900/40 border border-brand-700/30 flex items-center justify-center text-2xl mx-auto mb-4">2</div>
-                    <h3 class="font-semibold text-lg mb-2">AI analyzes your situation</h3>
-                    <p class="text-gray-400 text-sm">Our AI cross-references tax treaties, residency rules, and reporting thresholds across all your countries. Instantly.</p>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-green-900/40 border border-green-700/30 flex items-center justify-center text-2xl mx-auto mb-4">2</div>
+                    <h3 class="font-semibold text-lg mb-2">AI analyzes everything</h3>
+                    <p class="text-gray-400 text-sm">We cross-reference tax treaties, residency rules, reporting thresholds, and filing deadlines across all your countries.</p>
                 </div>
-                <div class="step-card text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-brand-900/40 border border-brand-700/30 flex items-center justify-center text-2xl mx-auto mb-4">3</div>
-                    <h3 class="font-semibold text-lg mb-2">Get your checklist</h3>
-                    <p class="text-gray-400 text-sm">A personalized action plan: which forms, which countries, which deadlines, and where to find help for complex cases.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Props -->
-    <section class="py-20 px-6 border-t border-white/5">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
-                    <div class="text-3xl mb-4">🌍</div>
-                    <h3 class="font-bold text-xl mb-3">50+ countries covered</h3>
-                    <p class="text-gray-400">US, Canada, India, UK, Germany, Australia, UAE, Nigeria, Philippines — wherever you're from or going, we've got the rules mapped.</p>
-                </div>
-                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
-                    <div class="text-3xl mb-4">🤖</div>
-                    <h3 class="font-bold text-xl mb-3">AI that understands immigration</h3>
-                    <p class="text-gray-400">Not generic tax software. Built specifically for people who've moved countries and face multi-jurisdiction complexity.</p>
-                </div>
-                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
-                    <div class="text-3xl mb-4">💰</div>
-                    <h3 class="font-bold text-xl mb-3">Save $2,000+ per year</h3>
-                    <p class="text-gray-400">Cross-border CPAs charge thousands. Get the same clarity about your obligations — for free during our beta.</p>
-                </div>
-                <div class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
-                    <div class="text-3xl mb-4">🔒</div>
-                    <h3 class="font-bold text-xl mb-3">Your data stays yours</h3>
-                    <p class="text-gray-400">We don't store financial data. No SSN, no tax returns, no bank info. Just your situation profile to generate your checklist.</p>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-green-900/40 border border-green-700/30 flex items-center justify-center text-2xl mx-auto mb-4">3</div>
+                    <h3 class="font-semibold text-lg mb-2">Get your action plan</h3>
+                    <p class="text-gray-400 text-sm">A complete checklist: forms needed, filing order, deadlines, risk areas, treaty benefits, estimated costs. Download as PDF.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tax Analyzer (Interactive) -->
-    <section id="analyzer" class="py-20 px-6 border-t border-white/5">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4">Your Tax Situation Analyzer</h2>
-            <p class="text-gray-400 text-center mb-10">Answer a few questions and get your personalized cross-border tax checklist.</p>
+    <!-- ============ TAX ANALYZER ============ -->
+    <section id="analyzer" class="py-20 px-6 bg-white/[0.01]">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Cross-Border Tax Analyzer</h2>
+            <p class="text-gray-400 text-center mb-10">Answer 8 questions. Get a comprehensive, personalized tax action plan.</p>
 
-            <div id="quiz-container" class="bg-dark-800/50 border border-white/5 rounded-2xl p-8">
-                <!-- Step indicators -->
-                <div class="flex justify-between mb-8">
-                    <div class="flex items-center gap-2" id="step-indicators"></div>
-                    <span class="text-sm text-gray-500" id="step-counter">Step 1 of 6</span>
+            <!-- Quiz Container -->
+            <div id="quiz-container" class="glass rounded-2xl p-8 glow">
+                <!-- Progress Bar -->
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-sm text-gray-400" id="step-label">Step 1 of 8</span>
+                        <span class="text-sm text-green-400" id="step-pct">13%</span>
+                    </div>
+                    <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-gradient-to-r from-green-600 to-cyan-500 rounded-full transition-all duration-500" style="width:13%"></div>
+                    </div>
                 </div>
 
-                <!-- Questions -->
-                <div id="question-area"></div>
+                <!-- Question Area -->
+                <div id="question-area" class="min-h-[300px]"></div>
 
                 <!-- Navigation -->
                 <div class="flex justify-between mt-8">
-                    <button id="btn-prev" onclick="prevStep()" class="text-gray-400 hover:text-white transition-colors text-sm hidden">← Back</button>
-                    <button id="btn-next" onclick="nextStep()" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors ml-auto">Next →</button>
+                    <button id="btn-prev" onclick="prevStep()" class="text-gray-400 hover:text-white transition text-sm hidden">← Back</button>
+                    <button id="btn-next" onclick="nextStep()" class="bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-xl font-semibold transition ml-auto">Next →</button>
                 </div>
             </div>
 
-            <!-- Results -->
+            <!-- Results Area -->
             <div id="results-area" class="hidden"></div>
         </div>
     </section>
 
-    <!-- CPA Comparison -->
+    <!-- ============ RESIDENCY TEST CALCULATOR ============ -->
+    <section id="residency" class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Residency Test Calculator</h2>
+            <p class="text-gray-400 text-center mb-10">Check if you qualify as a tax resident under different countries' rules.</p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- US Substantial Presence Test -->
+                <div class="glass rounded-2xl p-6">
+                    <h3 class="font-semibold text-lg mb-1 flex items-center gap-2">🇺🇸 US Substantial Presence Test</h3>
+                    <p class="text-gray-400 text-xs mb-4">Determines if you're a US tax resident for federal purposes</p>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="text-xs text-gray-500 block mb-1">Days in US — Current Year (2025)</label>
+                            <input type="number" id="spt-y0" value="0" min="0" max="366" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-green-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-500 block mb-1">Days in US — Prior Year (2024)</label>
+                            <input type="number" id="spt-y1" value="0" min="0" max="366" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-green-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-500 block mb-1">Days in US — Two Years Prior (2023)</label>
+                            <input type="number" id="spt-y2" value="0" min="0" max="366" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-green-500 focus:outline-none">
+                        </div>
+                        <button onclick="calcSPT()" class="w-full bg-green-600/20 hover:bg-green-600/30 text-green-400 border border-green-600/30 py-2.5 rounded-lg font-medium text-sm transition">Calculate →</button>
+                        <div id="spt-result" class="hidden p-4 rounded-lg text-sm"></div>
+                    </div>
+                </div>
+
+                <!-- Generic 183-Day Rule -->
+                <div class="glass rounded-2xl p-6">
+                    <h3 class="font-semibold text-lg mb-1 flex items-center gap-2">🌍 183-Day Rule Calculator</h3>
+                    <p class="text-gray-400 text-xs mb-4">Used by most countries (Canada, UK, EU, Australia, etc.)</p>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="text-xs text-gray-500 block mb-1">Country</label>
+                            <select id="day183-country" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-green-500 focus:outline-none">
+                                <option value="CA">🇨🇦 Canada</option>
+                                <option value="UK">🇬🇧 United Kingdom</option>
+                                <option value="DE">🇩🇪 Germany</option>
+                                <option value="AU">🇦🇺 Australia</option>
+                                <option value="FR">🇫🇷 France</option>
+                                <option value="NL">🇳🇱 Netherlands</option>
+                                <option value="IE">🇮🇪 Ireland</option>
+                                <option value="FI">🇫🇮 Finland</option>
+                                <option value="SG">🇸🇬 Singapore</option>
+                                <option value="AE">🇦🇪 UAE</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-500 block mb-1">Days Present in Tax Year</label>
+                            <input type="number" id="day183-days" value="0" min="0" max="366" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-green-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-500 block mb-1">Do you have a permanent home there?</label>
+                            <select id="day183-home" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-green-500 focus:outline-none">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        <button onclick="calc183()" class="w-full bg-green-600/20 hover:bg-green-600/30 text-green-400 border border-green-600/30 py-2.5 rounded-lg font-medium text-sm transition">Calculate →</button>
+                        <div id="day183-result" class="hidden p-4 rounded-lg text-sm"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TREATY LOOKUP ============ -->
+    <section id="treaties" class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Tax Treaty Lookup</h2>
+            <p class="text-gray-400 text-center mb-10">Find the treaty between any two countries and see key withholding rates.</p>
+
+            <div class="glass rounded-2xl p-8 glow-cyan">
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label class="text-xs text-gray-500 block mb-1">Country A</label>
+                        <select id="treaty-a" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-cyan-500 focus:outline-none">
+                            <option value="US">🇺🇸 United States</option>
+                            <option value="CA">🇨🇦 Canada</option>
+                            <option value="IN">🇮🇳 India</option>
+                            <option value="UK">🇬🇧 United Kingdom</option>
+                            <option value="DE">🇩🇪 Germany</option>
+                            <option value="AU">🇦🇺 Australia</option>
+                            <option value="FR">🇫🇷 France</option>
+                            <option value="NL">🇳🇱 Netherlands</option>
+                            <option value="SG">🇸🇬 Singapore</option>
+                            <option value="AE">🇦🇪 UAE</option>
+                            <option value="CN">🇨🇳 China</option>
+                            <option value="JP">🇯🇵 Japan</option>
+                            <option value="IE">🇮🇪 Ireland</option>
+                            <option value="FI">🇫🇮 Finland</option>
+                            <option value="PH">🇵🇭 Philippines</option>
+                            <option value="NG">🇳🇬 Nigeria</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs text-gray-500 block mb-1">Country B</label>
+                        <select id="treaty-b" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-cyan-500 focus:outline-none">
+                            <option value="IN">🇮🇳 India</option>
+                            <option value="US">🇺🇸 United States</option>
+                            <option value="CA">🇨🇦 Canada</option>
+                            <option value="UK">🇬🇧 United Kingdom</option>
+                            <option value="DE">🇩🇪 Germany</option>
+                            <option value="AU">🇦🇺 Australia</option>
+                            <option value="FR">🇫🇷 France</option>
+                            <option value="NL">🇳🇱 Netherlands</option>
+                            <option value="SG">🇸🇬 Singapore</option>
+                            <option value="AE">🇦🇪 UAE</option>
+                            <option value="CN">🇨🇳 China</option>
+                            <option value="JP">🇯🇵 Japan</option>
+                            <option value="IE">🇮🇪 Ireland</option>
+                            <option value="FI">🇫🇮 Finland</option>
+                            <option value="PH">🇵🇭 Philippines</option>
+                            <option value="NG">🇳🇬 Nigeria</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="lookupTreaty()" class="w-full bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 border border-cyan-600/30 py-3 rounded-xl font-medium transition">
+                    🔍 Look Up Treaty
+                </button>
+                <div id="treaty-result" class="hidden mt-6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ COST SAVINGS CALCULATOR ============ -->
     <section class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">How Much Are You Overpaying?</h2>
+            <p class="text-gray-400 text-center mb-10">See what cross-border tax help typically costs.</p>
+
+            <div class="glass rounded-2xl p-8">
+                <div class="mb-6">
+                    <label class="text-xs text-gray-500 block mb-1">How many countries do you file in?</label>
+                    <select id="cost-countries" onchange="calcCostSavings()" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-green-500 focus:outline-none">
+                        <option value="2">2 countries</option>
+                        <option value="3">3 countries</option>
+                        <option value="4">4+ countries</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="text-xs text-gray-500 block mb-1">Complexity level</label>
+                    <select id="cost-complexity" onchange="calcCostSavings()" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white text-sm focus:border-green-500 focus:outline-none">
+                        <option value="simple">Simple (salary + bank accounts)</option>
+                        <option value="medium">Medium (investments + rental income)</option>
+                        <option value="complex">Complex (business + multiple income types)</option>
+                    </select>
+                </div>
+                <div id="cost-result" class="grid grid-cols-3 gap-4">
+                    <div class="text-center p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+                        <div class="text-xs text-gray-400 mb-1">Cross-Border CPA</div>
+                        <div id="cost-cpa" class="text-2xl font-bold text-red-400">$2,500</div>
+                        <div class="text-xs text-gray-500 mt-1">per year</div>
+                    </div>
+                    <div class="text-center p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/10">
+                        <div class="text-xs text-gray-400 mb-1">Online Tax Software</div>
+                        <div id="cost-software" class="text-2xl font-bold text-yellow-400">$300</div>
+                        <div class="text-xs text-gray-500 mt-1">per country</div>
+                    </div>
+                    <div class="text-center p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+                        <div class="text-xs text-green-300 mb-1">ImmigrantTax.ai</div>
+                        <div class="text-2xl font-bold text-green-400">$0</div>
+                        <div class="text-xs text-gray-500 mt-1">free analysis</div>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <span class="text-sm text-gray-400">You could save up to </span>
+                    <span id="cost-savings" class="text-lg font-bold text-green-400">$2,500</span>
+                    <span class="text-sm text-gray-400"> per year</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CPA Comparison -->
+    <section id="pricing" class="py-20 px-6 border-t border-white/5">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-12">Why immigrants choose us</h2>
             <div class="overflow-x-auto">
-                <table class="w-full text-left">
+                <table class="w-full text-left text-sm">
                     <thead>
                         <tr class="border-b border-white/10">
                             <th class="py-4 px-4 text-gray-400 font-medium"></th>
                             <th class="py-4 px-4 text-gray-400 font-medium">Cross-Border CPA</th>
                             <th class="py-4 px-4 text-gray-400 font-medium">TurboTax / Wealthsimple</th>
-                            <th class="py-4 px-4 font-medium text-brand-400">ImmigrantTax.ai</th>
+                            <th class="py-4 px-4 text-gray-400 font-medium">Sprintax</th>
+                            <th class="py-4 px-4 font-medium text-green-400">ImmigrantTax.ai</th>
                         </tr>
                     </thead>
-                    <tbody class="text-sm">
+                    <tbody>
                         <tr class="border-b border-white/5">
-                            <td class="py-4 px-4 text-gray-300">Multi-country support</td>
-                            <td class="py-4 px-4">✅ Manual</td>
-                            <td class="py-4 px-4">❌</td>
-                            <td class="py-4 px-4 text-brand-400">✅ AI-powered</td>
+                            <td class="py-3 px-4 text-gray-300">Multi-country</td>
+                            <td class="py-3 px-4">✅ Manual</td>
+                            <td class="py-3 px-4">❌</td>
+                            <td class="py-3 px-4">US only</td>
+                            <td class="py-3 px-4 text-green-400">✅ 15+ countries</td>
                         </tr>
                         <tr class="border-b border-white/5">
-                            <td class="py-4 px-4 text-gray-300">Cost</td>
-                            <td class="py-4 px-4">$2,000-5,000+</td>
-                            <td class="py-4 px-4">$0-130</td>
-                            <td class="py-4 px-4 text-brand-400">Free (beta)</td>
+                            <td class="py-3 px-4 text-gray-300">Cost</td>
+                            <td class="py-3 px-4">$2,000-5,000+</td>
+                            <td class="py-3 px-4">$0-130</td>
+                            <td class="py-3 px-4">$50-90</td>
+                            <td class="py-3 px-4 text-green-400">Free</td>
                         </tr>
                         <tr class="border-b border-white/5">
-                            <td class="py-4 px-4 text-gray-300">Time to answers</td>
-                            <td class="py-4 px-4">Days-weeks</td>
-                            <td class="py-4 px-4">Hours</td>
-                            <td class="py-4 px-4 text-brand-400">5 minutes</td>
+                            <td class="py-3 px-4 text-gray-300">Time to answers</td>
+                            <td class="py-3 px-4">Days-weeks</td>
+                            <td class="py-3 px-4">Hours</td>
+                            <td class="py-3 px-4">1-2 hours</td>
+                            <td class="py-3 px-4 text-green-400">5 minutes</td>
                         </tr>
                         <tr class="border-b border-white/5">
-                            <td class="py-4 px-4 text-gray-300">Treaty analysis</td>
-                            <td class="py-4 px-4">✅</td>
-                            <td class="py-4 px-4">❌</td>
-                            <td class="py-4 px-4 text-brand-400">✅ Automated</td>
+                            <td class="py-3 px-4 text-gray-300">Treaty analysis</td>
+                            <td class="py-3 px-4">✅</td>
+                            <td class="py-3 px-4">❌</td>
+                            <td class="py-3 px-4">❌</td>
+                            <td class="py-3 px-4 text-green-400">✅ Automated</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="py-3 px-4 text-gray-300">Residency test</td>
+                            <td class="py-3 px-4">✅</td>
+                            <td class="py-3 px-4">❌</td>
+                            <td class="py-3 px-4">US only</td>
+                            <td class="py-3 px-4 text-green-400">✅ All countries</td>
+                        </tr>
+                        <tr class="border-b border-white/5">
+                            <td class="py-3 px-4 text-gray-300">FBAR / FATCA / T1135</td>
+                            <td class="py-3 px-4">✅</td>
+                            <td class="py-3 px-4">Sometimes</td>
+                            <td class="py-3 px-4">FBAR only</td>
+                            <td class="py-3 px-4 text-green-400">✅ All thresholds</td>
                         </tr>
                         <tr>
-                            <td class="py-4 px-4 text-gray-300">Immigration-aware</td>
-                            <td class="py-4 px-4">Sometimes</td>
-                            <td class="py-4 px-4">❌</td>
-                            <td class="py-4 px-4 text-brand-400">✅ Built for it</td>
+                            <td class="py-3 px-4 text-gray-300">PDF export</td>
+                            <td class="py-3 px-4">Varies</td>
+                            <td class="py-3 px-4">❌</td>
+                            <td class="py-3 px-4">❌</td>
+                            <td class="py-3 px-4 text-green-400">✅ Full report</td>
                         </tr>
                     </tbody>
                 </table>
@@ -257,21 +455,69 @@
         </div>
     </section>
 
-    <!-- Waitlist CTA -->
-    <section class="py-20 px-6 border-t border-white/5">
+    <!-- Waitlist -->
+    <section id="waitlist-section" class="py-20 px-6 border-t border-white/5">
         <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4">Join the waitlist</h2>
-            <p class="text-gray-400 mb-8">Be first to get the full AI tax advisor when we launch. Early access members get lifetime free access.</p>
-            <div id="waitlist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input type="email" id="waitlist-email" placeholder="your@email.com" class="flex-1 bg-dark-800 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors">
-                <button onclick="joinWaitlist()" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors whitespace-nowrap">
+            <h2 class="text-3xl font-bold mb-4">Want the full AI tax advisor?</h2>
+            <p class="text-gray-400 mb-8">The analyzer above gives you a solid starting point. The full version will include AI-powered deep analysis, step-by-step filing guides, and direct form preparation. Early access members get lifetime free access.</p>
+            <form action="https://formsubmit.co/atalashutosh@gmail.com" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input type="hidden" name="_subject" value="ImmigrantTax.ai Waitlist Signup">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="email" name="email" placeholder="your@email.com" required class="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition">
+                <button type="submit" class="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap">
                     Join Waitlist
                 </button>
-            </div>
-            <div id="waitlist-success" class="hidden text-brand-400 mt-4">
-                ✅ You're on the list! We'll be in touch.
-            </div>
+            </form>
             <p class="text-xs text-gray-600 mt-3">No spam. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- Cross-Promotion -->
+    <section class="py-16 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <p class="text-sm text-gray-500 uppercase tracking-widest mb-2">Also from</p>
+                <a href="https://atalovesyou.github.io/opensphere-labs/" target="_blank" class="text-xl font-bold text-white hover:text-green-400 transition">OpenSphere Labs</a>
+                <p class="text-gray-400 text-sm mt-2">AI-powered micro-tools for freelancers &amp; small businesses</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="https://atalovesyou.github.io/unslop-ai/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
+                    <div class="text-lg mb-1">🧹 UnSlop.ai</div>
+                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI slop detector & humanizer</div>
+                </a>
+                <a href="https://atalovesyou.github.io/contractpilot/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
+                    <div class="text-lg mb-1">📝 ContractPilot</div>
+                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI contracts for freelancers</div>
+                </a>
+                <a href="https://atalovesyou.github.io/invoicepilot/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
+                    <div class="text-lg mb-1">💰 InvoicePilot</div>
+                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI invoicing for freelancers</div>
+                </a>
+                <a href="https://atalovesyou.github.io/intakebot/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
+                    <div class="text-lg mb-1">💬 IntakeBot</div>
+                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI conversational intake</div>
+                </a>
+                <a href="https://atalovesyou.github.io/proposalpilot/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
+                    <div class="text-lg mb-1">📄 ProposalPilot</div>
+                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI proposals for freelancers</div>
+                </a>
+                <a href="https://atalovesyou.github.io/ghosttracker/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
+                    <div class="text-lg mb-1">👻 GhostTracker</div>
+                    <div class="text-xs text-gray-400 group-hover:text-gray-300">Proposal analytics</div>
+                </a>
+                <a href="https://atalovesyou.github.io/reviewagent/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
+                    <div class="text-lg mb-1">⭐ ReviewAgent</div>
+                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI review management</div>
+                </a>
+                <a href="https://atalovesyou.github.io/nameforge/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
+                    <div class="text-lg mb-1">✨ NameForge</div>
+                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI business name generator</div>
+                </a>
+            </div>
+            <div class="text-center mt-8">
+                <a href="https://atalovesyou.github.io/opensphere-labs/" target="_blank" class="text-sm text-green-400 hover:text-green-300 transition">View all products →</a>
+            </div>
         </div>
     </section>
 
@@ -280,366 +526,1153 @@
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
                 <span>🌍</span>
-                <span class="font-semibold">ImmigrantTax<span class="text-brand-500">.ai</span></span>
+                <span class="font-semibold">ImmigrantTax<span class="text-green-400">.ai</span></span>
             </div>
-            <p class="text-sm text-gray-500">Built by <a href="https://opensphere.ai" class="text-gray-400 hover:text-white transition-colors">OpenSphere</a> · Not tax advice. Consult a professional for your specific situation.</p>
+            <p class="text-sm text-gray-500">Built by <a href="https://atalovesyou.github.io/opensphere-labs/" class="text-gray-400 hover:text-white transition">OpenSphere Labs</a> · <strong>Not tax advice.</strong> Consult a professional for your specific situation.</p>
             <div class="flex gap-6 text-sm text-gray-500">
-                <a href="https://legalbridge.ai" class="hover:text-white transition-colors">LegalBridge.ai</a>
-                <a href="https://twitter.com/atalovesyou" class="hover:text-white transition-colors">Twitter</a>
+                <a href="https://legalbridge.ai" class="hover:text-white transition">LegalBridge.ai</a>
+                <a href="https://twitter.com/atalovesyou" class="hover:text-white transition">Twitter</a>
             </div>
         </div>
     </footer>
 
-    <script>
-        const questions = [
-            {
-                id: 'current_country',
-                question: 'Where do you currently live?',
-                subtitle: 'Your primary country of tax residence',
-                type: 'select',
-                options: ['United States', 'Canada', 'United Kingdom', 'Germany', 'Australia', 'India', 'UAE', 'Singapore', 'Netherlands', 'France', 'Ireland', 'Other']
-            },
-            {
-                id: 'home_country',
-                question: 'What\'s your home country (country of citizenship)?',
-                subtitle: 'Where you hold citizenship or permanent residency',
-                type: 'select',
-                options: ['India', 'China', 'Nigeria', 'Philippines', 'Mexico', 'Brazil', 'Pakistan', 'Bangladesh', 'United Kingdom', 'Canada', 'United States', 'Other']
-            },
-            {
-                id: 'years_abroad',
-                question: 'How long have you been in your current country?',
-                type: 'select',
-                options: ['Less than 1 year', '1-3 years', '3-5 years', '5-10 years', '10+ years']
-            },
-            {
-                id: 'income_sources',
-                question: 'Where do you earn income?',
-                subtitle: 'Select all that apply',
-                type: 'multi',
-                options: ['Salary in current country', 'Freelance/contract work (international)', 'Rental income in home country', 'Investment income (stocks, mutual funds)', 'Business income in home country', 'Pension or retirement accounts', 'Cryptocurrency']
-            },
-            {
-                id: 'foreign_assets',
-                question: 'Do you have financial assets abroad?',
-                subtitle: 'Bank accounts, property, investments in another country',
-                type: 'multi',
-                options: ['Bank accounts in home country', 'Property/real estate abroad', 'Foreign retirement accounts (PPF, EPF, NPS, etc.)', 'Foreign stocks or mutual funds', 'Foreign business ownership', 'None of the above']
-            },
-            {
-                id: 'visa_status',
-                question: 'What\'s your immigration status?',
-                type: 'select',
-                options: ['Work visa (H-1B, TN, Tier 2, etc.)', 'Student visa (F-1, Study permit)', 'Permanent resident / Green card', 'Citizen (naturalized)', 'Work permit (open/closed)', 'Digital nomad / Remote worker', 'Other']
-            }
-        ];
-
-        let currentStep = 0;
-        let answers = {};
-
-        function renderStep() {
-            const q = questions[currentStep];
-            const area = document.getElementById('question-area');
-            document.getElementById('step-counter').textContent = `Step ${currentStep + 1} of ${questions.length}`;
-            document.getElementById('btn-prev').classList.toggle('hidden', currentStep === 0);
-            document.getElementById('btn-next').textContent = currentStep === questions.length - 1 ? 'Get My Checklist →' : 'Next →';
-
-            let html = `<h3 class="text-xl font-semibold mb-2">${q.question}</h3>`;
-            if (q.subtitle) html += `<p class="text-gray-400 text-sm mb-6">${q.subtitle}</p>`;
-            else html += '<div class="mb-6"></div>';
-
-            if (q.type === 'select') {
-                html += '<div class="grid grid-cols-2 gap-3">';
-                q.options.forEach(opt => {
-                    const selected = answers[q.id] === opt;
-                    html += `<button onclick="selectOption('${q.id}', '${opt}', this)" class="text-left px-4 py-3 rounded-lg border ${selected ? 'border-brand-500 bg-brand-900/30 text-brand-400' : 'border-white/10 hover:border-white/20 text-gray-300'} transition-colors text-sm">${opt}</button>`;
-                });
-                html += '</div>';
-            } else if (q.type === 'multi') {
-                const selected = answers[q.id] || [];
-                html += '<div class="grid grid-cols-1 gap-3">';
-                q.options.forEach(opt => {
-                    const isSelected = selected.includes(opt);
-                    html += `<button onclick="toggleMulti('${q.id}', '${opt}', this)" class="text-left px-4 py-3 rounded-lg border ${isSelected ? 'border-brand-500 bg-brand-900/30 text-brand-400' : 'border-white/10 hover:border-white/20 text-gray-300'} transition-colors text-sm flex items-center gap-3"><span class="w-5 h-5 rounded border ${isSelected ? 'border-brand-500 bg-brand-500' : 'border-white/20'} flex items-center justify-center text-xs">${isSelected ? '✓' : ''}</span>${opt}</button>`;
-                });
-                html += '</div>';
-            }
-            area.innerHTML = html;
+<script>
+// ============ COUNTRY DATABASE ============
+const COUNTRIES = {
+    US: {
+        name: 'United States', flag: '🇺🇸', code: 'US',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: 'Substantial Presence Test (183-day weighted) or Green Card',
+        taxSystem: 'Worldwide (citizens & residents)',
+        filingDeadline: 'April 15',
+        extensionDeadline: 'October 15',
+        autoExtension: 'June 15 (if abroad)',
+        currency: 'USD',
+        forms: [
+            { form: 'Form 1040', desc: 'US Individual Income Tax Return (residents)', who: 'all' },
+            { form: 'Form 1040-NR', desc: 'US Income Tax Return for Nonresident Aliens', who: 'nonresident' },
+            { form: 'FinCEN 114 (FBAR)', desc: 'Report of Foreign Bank & Financial Accounts — aggregate balance >$10,000', who: 'foreign_accounts', threshold: 10000 },
+            { form: 'Form 8938 (FATCA)', desc: 'Statement of Specified Foreign Financial Assets — >$50K single / $200K married', who: 'foreign_assets', threshold: 50000 },
+            { form: 'Form 2555', desc: 'Foreign Earned Income Exclusion (up to $126,500 for 2024)', who: 'foreign_income' },
+            { form: 'Form 1116', desc: 'Foreign Tax Credit — claim credit for taxes paid abroad', who: 'foreign_income' },
+            { form: 'Form 8833', desc: 'Treaty-Based Return Position Disclosure', who: 'treaty' },
+            { form: 'Form 3520', desc: 'Annual Return for Foreign Trusts / Large Foreign Gifts (>$100K)', who: 'foreign_trust' },
+            { form: 'Form 5471', desc: 'Information Return of US Persons w/ Respect to Certain Foreign Corps', who: 'foreign_business' },
+        ],
+        penalties: {
+            fbar: '$10,000 per account per year (non-willful); up to $100,000 or 50% of balance (willful)',
+            fatca: '$10,000 per form + $10K/month after 90 days (max $60K)',
+            lateFiling: '5% of unpaid tax per month (max 25%)'
         }
-
-        function selectOption(id, value) {
-            answers[id] = value;
-            renderStep();
+    },
+    CA: {
+        name: 'Canada', flag: '🇨🇦', code: 'CA',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days + significant residential ties (dwelling, spouse, dependants)',
+        taxSystem: 'Worldwide (residents)',
+        filingDeadline: 'April 30',
+        selfEmployedDeadline: 'June 15 (interest accrues from April 30)',
+        currency: 'CAD',
+        forms: [
+            { form: 'T1 General', desc: 'Canadian Income Tax and Benefit Return', who: 'all' },
+            { form: 'T1135', desc: 'Foreign Income Verification Statement — foreign property cost >CAD $100,000', who: 'foreign_assets', threshold: 100000 },
+            { form: 'T2209', desc: 'Federal Foreign Tax Credits — claim taxes paid to other countries', who: 'foreign_income' },
+            { form: 'T2036', desc: 'Provincial/Territorial Foreign Tax Credit', who: 'foreign_income' },
+            { form: 'T1141', desc: 'Information Return in Respect of Contributions to Non-Resident Trusts', who: 'foreign_trust' },
+            { form: 'T1134', desc: 'Information Return Relating to Controlled Foreign Affiliates', who: 'foreign_business' },
+            { form: 'NR4', desc: 'Statement of Amounts Paid or Credited to Non-Residents', who: 'nonresident' },
+        ],
+        penalties: {
+            t1135: '$25/day late (min $100, max $2,500); gross negligence: $500/month (max $12,000)',
+            lateFiling: '5% of balance + 1% per month (max 12 months)'
         }
-
-        function toggleMulti(id, value) {
-            if (!answers[id]) answers[id] = [];
-            const idx = answers[id].indexOf(value);
-            if (idx > -1) answers[id].splice(idx, 1);
-            else answers[id].push(value);
-            renderStep();
+    },
+    IN: {
+        name: 'India', flag: '🇮🇳', code: 'IN',
+        taxYear: 'April 1 – March 31',
+        residencyRule: '182 days in India OR 60 days + 365 days in prior 4 years (stricter for Indian citizens/PIOs)',
+        taxSystem: 'Worldwide (residents); Indian-source only (NRIs)',
+        filingDeadline: 'July 31',
+        belatedDeadline: 'December 31',
+        currency: 'INR',
+        forms: [
+            { form: 'ITR-1 (Sahaj)', desc: 'Salary + 1 house property + other sources (resident, <₹50L)', who: 'simple' },
+            { form: 'ITR-2', desc: 'No business/professional income, capital gains, foreign income, >1 house', who: 'foreign_income' },
+            { form: 'ITR-3', desc: 'Income from business or profession', who: 'business' },
+            { form: 'Form 67', desc: 'Claim DTAA relief / Foreign Tax Credit — MUST file before ITR', who: 'treaty' },
+            { form: 'Schedule FA', desc: 'Foreign Assets & Income disclosure (in ITR-2/3) — ALL foreign accounts, property, investments', who: 'foreign_assets' },
+            { form: 'Form 15CA/15CB', desc: 'Remittance to non-residents — certificate for foreign payments', who: 'remittance' },
+        ],
+        penalties: {
+            lateFiling: '₹1,000-10,000 (u/s 234F)',
+            foreignAssets: 'Up to ₹10 lakh penalty under Black Money Act for non-disclosure'
         }
-
-        function nextStep() {
-            if (currentStep < questions.length - 1) {
-                currentStep++;
-                renderStep();
-            } else {
-                showResults();
-            }
+    },
+    UK: {
+        name: 'United Kingdom', flag: '🇬🇧', code: 'UK',
+        taxYear: 'April 6 – April 5',
+        residencyRule: 'Statutory Residence Test (SRT) — automatic overseas/UK tests + sufficient ties test',
+        taxSystem: 'Worldwide (domiciled); Remittance basis option (non-domiciled)',
+        filingDeadline: 'January 31 (online) / October 31 (paper)',
+        currency: 'GBP',
+        forms: [
+            { form: 'Self Assessment (SA100)', desc: 'UK Individual Tax Return', who: 'all' },
+            { form: 'SA106', desc: 'Foreign income supplementary pages', who: 'foreign_income' },
+            { form: 'SA109', desc: 'Residence, remittance basis — claim non-dom status or split year', who: 'nonresident' },
+        ],
+        penalties: {
+            lateFiling: '£100 immediate + £10/day after 3 months + 5% of tax after 6 months',
         }
-
-        function prevStep() {
-            if (currentStep > 0) {
-                currentStep--;
-                renderStep();
-            }
+    },
+    DE: {
+        name: 'Germany', flag: '🇩🇪', code: 'DE',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days OR habitual abode / registered address (Anmeldung)',
+        taxSystem: 'Worldwide (residents); German-source only (non-residents)',
+        filingDeadline: 'July 31 (mandatory filers) / Sept 30 (voluntary)',
+        advisorDeadline: 'February 28/29 (next year, with Steuerberater)',
+        currency: 'EUR',
+        forms: [
+            { form: 'Einkommensteuererklärung (ESt 1A)', desc: 'Annual Income Tax Return', who: 'all' },
+            { form: 'Anlage AUS', desc: 'Foreign income attachment', who: 'foreign_income' },
+            { form: 'Anlage KAP', desc: 'Capital income (may need if foreign investment income)', who: 'investments' },
+        ],
+        penalties: {
+            lateFiling: '0.25% of assessed tax per month late (min €25/month)',
         }
+    },
+    AU: {
+        name: 'Australia', flag: '🇦🇺', code: 'AU',
+        taxYear: 'July 1 – June 30',
+        residencyRule: 'Resides test, domicile test, 183-day test, Commonwealth superannuation test',
+        taxSystem: 'Worldwide (residents); Australian-source only (non-residents)',
+        filingDeadline: 'October 31',
+        agentDeadline: 'March-May (next year, with tax agent)',
+        currency: 'AUD',
+        forms: [
+            { form: 'Individual Tax Return', desc: 'Filed online via myTax (ATO)', who: 'all' },
+            { form: 'Foreign Income Schedule', desc: 'Declare worldwide income including foreign employment', who: 'foreign_income' },
+        ],
+        penalties: {
+            lateFiling: '$313 per 28-day period (up to 5 periods = $1,565)',
+        }
+    },
+    FI: {
+        name: 'Finland', flag: '🇫🇮', code: 'FI',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days or permanent home in Finland',
+        taxSystem: 'Worldwide (residents); Finnish-source only (non-residents)',
+        filingDeadline: 'Pre-filled by March, corrections by May',
+        currency: 'EUR',
+        forms: [
+            { form: 'Veroilmoitus (Pre-filled)', desc: 'Pre-filled tax return from Vero.fi — verify and correct', who: 'all' },
+            { form: 'Form 16A', desc: 'Foreign income and double taxation relief', who: 'foreign_income' },
+        ],
+        penalties: {
+            lateFiling: 'Tax increase of 2-10% of assessed amount',
+        }
+    },
+    SG: {
+        name: 'Singapore', flag: '🇸🇬', code: 'SG',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days or permanent resident',
+        taxSystem: 'Territorial (only Singapore-sourced income, with exceptions)',
+        filingDeadline: 'April 18 (e-filing) / April 15 (paper)',
+        currency: 'SGD',
+        forms: [
+            { form: 'Form B / B1', desc: 'Individual Income Tax Return (IRAS)', who: 'all' },
+            { form: 'Form IR8A', desc: 'Employer-provided — employment income details', who: 'employment' },
+        ],
+        penalties: {
+            lateFiling: '$200 + possible court summons + estimated assessment',
+        }
+    },
+    AE: {
+        name: 'United Arab Emirates', flag: '🇦🇪', code: 'AE',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days or visa holder with economic interest',
+        taxSystem: 'No personal income tax (corporate tax from June 2023 on profits >AED 375K)',
+        filingDeadline: 'N/A for personal income tax',
+        currency: 'AED',
+        forms: [
+            { form: 'Tax Residency Certificate', desc: 'Apply through FTA to claim treaty benefits in other countries', who: 'treaty' },
+            { form: 'Corporate Tax Return', desc: 'Only if you have a UAE business with >AED 375K profit', who: 'business' },
+        ],
+        penalties: {}
+    },
+    NL: {
+        name: 'Netherlands', flag: '🇳🇱', code: 'NL',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days or center of life interests',
+        taxSystem: 'Worldwide (residents); Box 1/2/3 system',
+        filingDeadline: 'May 1',
+        currency: 'EUR',
+        forms: [
+            { form: 'Aangifte inkomstenbelasting', desc: 'Income Tax Return (via Belastingdienst/Mijn Belastingdienst)', who: 'all' },
+            { form: 'M-form', desc: 'Migration tax return — for year of arrival or departure', who: 'migration' },
+        ],
+        penalties: {
+            lateFiling: 'Up to €5,514 fine',
+        }
+    },
+    FR: {
+        name: 'France', flag: '🇫🇷', code: 'FR',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days or main home or center of economic interests or main professional activity',
+        taxSystem: 'Worldwide (residents)',
+        filingDeadline: 'May-June (online, varies by department)',
+        currency: 'EUR',
+        forms: [
+            { form: 'Déclaration 2042', desc: 'Main income tax return', who: 'all' },
+            { form: 'Form 2047', desc: 'Foreign income declaration', who: 'foreign_income' },
+            { form: 'Form 3916', desc: 'Declaration of foreign bank accounts', who: 'foreign_accounts' },
+        ],
+        penalties: {
+            foreignAccounts: '€1,500 per undeclared account per year (€10,000 if in non-cooperative state)',
+        }
+    },
+    CN: {
+        name: 'China', flag: '🇨🇳', code: 'CN',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days (domiciled persons taxed worldwide; non-domiciled exempt on foreign income for first 6 years)',
+        taxSystem: 'Worldwide (domiciled); China-source (non-domiciled <6 years)',
+        filingDeadline: 'March 31 (annual reconciliation)',
+        currency: 'CNY',
+        forms: [
+            { form: 'IIT Annual Return', desc: 'Individual Income Tax annual reconciliation', who: 'all' },
+            { form: 'Foreign Income Schedule', desc: 'Declare foreign-source income (for residents)', who: 'foreign_income' },
+        ],
+        penalties: {
+            lateFiling: '0.05% of unpaid tax per day',
+        }
+    },
+    JP: {
+        name: 'Japan', flag: '🇯🇵', code: 'JP',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: 'Domicile or 1+ year residence; non-permanent resident (< 5 years): taxed on Japan-source + remitted foreign income',
+        taxSystem: 'Worldwide (permanent residents); Remittance-based (non-permanent residents)',
+        filingDeadline: 'March 15',
+        currency: 'JPY',
+        forms: [
+            { form: 'Kakutei Shinkoku (確定申告)', desc: 'Final Income Tax Return', who: 'all' },
+            { form: 'Foreign Tax Credit Form', desc: 'Claim credit for taxes paid abroad', who: 'foreign_income' },
+        ],
+        penalties: {
+            lateFiling: '15-20% additional tax on undeclared amount',
+        }
+    },
+    PH: {
+        name: 'Philippines', flag: '🇵🇭', code: 'PH',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: 'Citizens taxed worldwide regardless; resident aliens on PH-source only',
+        taxSystem: 'Worldwide (citizens); PH-source only (resident aliens)',
+        filingDeadline: 'April 15',
+        currency: 'PHP',
+        forms: [
+            { form: 'BIR Form 1700', desc: 'Annual Income Tax Return (purely compensation)', who: 'employment' },
+            { form: 'BIR Form 1701', desc: 'Annual ITR (mixed income, self-employed, professional)', who: 'business' },
+            { form: 'BIR Form 2316', desc: 'Certificate of Compensation Payment (from employer)', who: 'employment' },
+        ],
+        penalties: {
+            lateFiling: '25% surcharge + 12% annual interest + compromise penalty',
+        }
+    },
+    NG: {
+        name: 'Nigeria', flag: '🇳🇬', code: 'NG',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days or permanent home',
+        taxSystem: 'Worldwide (residents); Nigerian-source (non-residents)',
+        filingDeadline: 'March 31',
+        currency: 'NGN',
+        forms: [
+            { form: 'FIRS Self-Assessment Return', desc: 'Annual income tax self-assessment', who: 'all' },
+            { form: 'Tax Identification Number (TIN)', desc: 'Required for all taxpayers — get from JTB', who: 'all' },
+        ],
+        penalties: {
+            lateFiling: '10% of tax due + interest at prevailing monetary policy rate',
+        }
+    },
+    IE: {
+        name: 'Ireland', flag: '🇮🇪', code: 'IE',
+        taxYear: 'Jan 1 – Dec 31',
+        residencyRule: '183 days or 280 days over 2 years (present 30+ days in year)',
+        taxSystem: 'Worldwide (residents & domiciled); Remittance basis (resident, non-domiciled)',
+        filingDeadline: 'October 31 (paper) / November (ROS)',
+        currency: 'EUR',
+        forms: [
+            { form: 'Form 11', desc: 'Self-assessed income tax return', who: 'all' },
+            { form: 'Form 12', desc: 'PAYE employee return (for additional income)', who: 'employment' },
+        ],
+        penalties: {
+            lateFiling: '5-10% surcharge on tax due',
+        }
+    }
+};
 
-        function showResults() {
-            document.getElementById('quiz-container').classList.add('hidden');
-            const results = document.getElementById('results-area');
-            results.classList.remove('hidden');
+// ============ TREATY DATABASE ============
+const TREATIES = {
+    'US-IN': { exists: true, dividends: '15-25%', interest: '10-15%', royalties: '10-15%', capitalGains: 'Residence state (with exceptions for real property)', pensions: 'Residence state generally', students: 'Exempt up to $5,000/year from US tax', article: 'US-India DTAA (1989, amended 2006)', notes: 'India does not allow FTC on Social Security taxes. US citizens cannot claim treaty benefits to reduce US tax.' },
+    'US-CA': { exists: true, dividends: '15%', interest: '10%', royalties: '10%', capitalGains: 'Residence state (with real property exception)', pensions: 'Source state may tax up to 15% (cross-border pensions)', students: 'Exempt from source-state tax on payments from abroad', article: 'US-Canada Tax Convention (1980, amended through 2007)', notes: 'Social Security benefits taxable only in residence country (up to 85%). Canada-US treaty is one of the most comprehensive.' },
+    'US-UK': { exists: true, dividends: '15%', interest: '0%', royalties: '0%', capitalGains: 'Residence state', pensions: 'Exclusive taxation by residence state', students: 'Exempt from host-country tax on payments from abroad', article: 'US-UK Double Taxation Convention (2001)', notes: 'Very favorable — 0% on interest and royalties. UK pension contributions may be deductible in US under treaty.' },
+    'US-CN': { exists: true, dividends: '10%', interest: '10%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Up to $5,000/year exempt from US tax', article: 'US-China Income Tax Convention (1984)', notes: 'China does not allow its citizens to claim treaty benefits to avoid Chinese tax.' },
+    'US-DE': { exists: true, dividends: '15%', interest: '0%', royalties: '0%', capitalGains: 'Residence state', pensions: 'Generally source state', students: 'Exempt from host-country tax', article: 'US-Germany Income Tax Convention (1989, Protocol 2006)', notes: '0% withholding on interest and royalties between US and Germany.' },
+    'US-AU': { exists: true, dividends: '15%', interest: '10%', royalties: '5%', capitalGains: 'Residence state', pensions: 'Source state up to 15%', students: 'Exempt from host-country tax', article: 'US-Australia Income Tax Convention (1982, Protocol 2001)', notes: 'Unique provision: Australian superannuation may qualify for US tax deferral.' },
+    'US-JP': { exists: true, dividends: '10%', interest: '10%', royalties: '0%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'US-Japan Tax Convention (2003)', notes: '0% on royalties is very favorable for IP-heavy arrangements.' },
+    'US-PH': { exists: true, dividends: '20-25%', interest: '15%', royalties: '15%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax up to $3,000', article: 'US-Philippines Income Tax Convention (1976)', notes: 'Older treaty with higher withholding rates than most modern treaties.' },
+    'US-SG': { exists: true, dividends: '15%', interest: '12%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'US-Singapore Income Tax Convention (1996)', notes: 'Singapore\'s territorial system means most foreign income is not taxed there anyway.' },
+    'US-FI': { exists: true, dividends: '15%', interest: '0%', royalties: '0%', capitalGains: 'Residence state', pensions: 'Residence state (with Social Security exception)', students: 'Exempt from host-country tax', article: 'US-Finland Income Tax Convention (1989)', notes: '0% on interest and royalties. Very favorable treaty.' },
+    'CA-IN': { exists: true, dividends: '15-25%', interest: '15%', royalties: '10-15%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax on support payments', article: 'Canada-India DTAA (1996)', notes: 'Canada allows FTC for Indian taxes paid. T2209 form to claim.' },
+    'CA-UK': { exists: true, dividends: '15%', interest: '10%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Taxable in both (with credit)', students: 'Exempt from host-country tax', article: 'Canada-UK Convention (1978, amended)', notes: 'UK pensions received in Canada may be taxed at 15% maximum by the UK.' },
+    'CA-US': { exists: true, dividends: '15%', interest: '10%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Source state up to 15%', students: 'Exempt from source-state tax', article: 'Canada-US Tax Convention (1980, amended 2007)', notes: 'See US-CA entry for details.' },
+    'CA-CN': { exists: true, dividends: '15%', interest: '10%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'Canada-China DTA (1986, renegotiated 2014)', notes: 'Newer protocol reduced rates significantly.' },
+    'CA-AU': { exists: true, dividends: '15%', interest: '10%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'Canada-Australia DTA (1980, amended 2002)', notes: '' },
+    'CA-FI': { exists: true, dividends: '15%', interest: '10%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'Canada-Finland DTA (2006)', notes: '' },
+    'UK-IN': { exists: true, dividends: '10-15%', interest: '10-15%', royalties: '10-15%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'UK-India DTAA (1993, amended)', notes: 'Being renegotiated as of 2024. Current rates may change.' },
+    'UK-AU': { exists: true, dividends: '15%', interest: '10%', royalties: '5%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'UK-Australia DTA (2003)', notes: '' },
+    'IN-AE': { exists: true, dividends: '10%', interest: '12.5%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'India-UAE DTAA (1992, amended 2007)', notes: 'UAE has no personal income tax — treaty mainly benefits Indian residents with UAE income.' },
+    'IN-SG': { exists: true, dividends: '10-15%', interest: '15%', royalties: '10%', capitalGains: 'Source state can tax (special rules)', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'India-Singapore DTAA (1994, amended 2016)', notes: '2016 amendment removed capital gains exemption that was widely used for investment routing.' },
+    'IN-FI': { exists: true, dividends: '10%', interest: '10%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'India-Finland DTAA (2010)', notes: '' },
+    'IN-DE': { exists: true, dividends: '10%', interest: '10%', royalties: '10%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'India-Germany DTAA (1995, Protocol 2004)', notes: '' },
+    'DE-FI': { exists: true, dividends: '15%', interest: '0%', royalties: '0%', capitalGains: 'Residence state', pensions: 'Residence state', students: 'Exempt from host-country tax', article: 'Germany-Finland DTA (2016)', notes: '' },
+};
 
-            const current = answers.current_country || 'your current country';
-            const home = answers.home_country || 'your home country';
-            const incomes = answers.income_sources || [];
-            const assets = answers.foreign_assets || [];
-            const visa = answers.visa_status || '';
+// Normalize treaty key
+function treatyKey(a, b) {
+    const k1 = `${a}-${b}`, k2 = `${b}-${a}`;
+    return TREATIES[k1] ? k1 : TREATIES[k2] ? k2 : null;
+}
 
-            let forms = [];
-            let deadlines = [];
-            let warnings = [];
+// ============ QUIZ QUESTIONS ============
+const questions = [
+    {
+        id: 'current_country', question: 'Where do you currently live?',
+        subtitle: 'Your primary country of tax residence right now',
+        type: 'select',
+        options: Object.entries(COUNTRIES).map(([k,v]) => ({ value: k, label: `${v.flag} ${v.name}` }))
+    },
+    {
+        id: 'home_country', question: "What's your home country (citizenship)?",
+        subtitle: 'Where you hold citizenship or were born',
+        type: 'select',
+        options: Object.entries(COUNTRIES).map(([k,v]) => ({ value: k, label: `${v.flag} ${v.name}` }))
+    },
+    {
+        id: 'other_countries', question: 'Any other countries where you have tax obligations?',
+        subtitle: 'Countries where you earned income, own property, or have significant ties',
+        type: 'multi',
+        options: Object.entries(COUNTRIES).map(([k,v]) => ({ value: k, label: `${v.flag} ${v.name}` }))
+    },
+    {
+        id: 'years_abroad', question: 'How long have you been in your current country?',
+        type: 'select',
+        options: [
+            { value: '<1', label: 'Less than 1 year' },
+            { value: '1-3', label: '1-3 years' },
+            { value: '3-5', label: '3-5 years' },
+            { value: '5-10', label: '5-10 years' },
+            { value: '10+', label: '10+ years' }
+        ]
+    },
+    {
+        id: 'days_present', question: 'How many days were you physically present in your current country last year?',
+        subtitle: 'This determines tax residency under most countries\' rules',
+        type: 'select',
+        options: [
+            { value: '<30', label: 'Under 30 days' },
+            { value: '30-90', label: '30-90 days' },
+            { value: '91-182', label: '91-182 days' },
+            { value: '183-270', label: '183-270 days' },
+            { value: '270+', label: '270+ days (most of the year)' }
+        ]
+    },
+    {
+        id: 'income_sources', question: 'What types of income do you have?',
+        subtitle: 'Select all that apply',
+        type: 'multi',
+        options: [
+            { value: 'salary', label: '💼 Salary / Employment' },
+            { value: 'freelance', label: '💻 Freelance / Contract work' },
+            { value: 'rental', label: '🏠 Rental income (in any country)' },
+            { value: 'investments', label: '📈 Investments (stocks, dividends, interest)' },
+            { value: 'business', label: '🏢 Business income' },
+            { value: 'pension', label: '👴 Pension / Retirement withdrawals' },
+            { value: 'crypto', label: '🪙 Cryptocurrency' },
+            { value: 'capital_gains', label: '💰 Capital gains (property/asset sales)' }
+        ]
+    },
+    {
+        id: 'foreign_assets', question: 'What foreign assets do you hold?',
+        subtitle: 'Assets in any country OTHER than your current residence',
+        type: 'multi',
+        options: [
+            { value: 'bank_accounts', label: '🏦 Bank accounts abroad' },
+            { value: 'property', label: '🏠 Real estate abroad' },
+            { value: 'retirement', label: '👴 Foreign retirement accounts (PPF, EPF, NPS, 401k, RRSP, superannuation)' },
+            { value: 'stocks', label: '📊 Foreign stocks / mutual funds / ETFs' },
+            { value: 'business_ownership', label: '🏢 Ownership in foreign company (>10%)' },
+            { value: 'trusts', label: '📜 Foreign trusts or foundations' },
+            { value: 'none', label: '❌ None' }
+        ]
+    },
+    {
+        id: 'foreign_asset_value', question: 'Approximate total value of your foreign assets?',
+        subtitle: 'This determines which reporting forms you need (FBAR, FATCA, T1135, etc.)',
+        type: 'select',
+        options: [
+            { value: 'none', label: 'No foreign assets' },
+            { value: '<10k', label: 'Under $10,000 USD' },
+            { value: '10k-50k', label: '$10,000 - $50,000 USD' },
+            { value: '50k-100k', label: '$50,000 - $100,000 USD' },
+            { value: '100k-250k', label: '$100,000 - $250,000 USD' },
+            { value: '250k+', label: '$250,000+ USD' }
+        ]
+    }
+];
 
-            // US-specific
-            if (current === 'United States') {
-                forms.push({ form: 'Form 1040 / 1040-NR', country: '🇺🇸 US', desc: 'Federal income tax return' });
-                if (assets.some(a => a.includes('Bank accounts') || a.includes('Foreign'))) {
-                    forms.push({ form: 'FinCEN 114 (FBAR)', country: '🇺🇸 US', desc: 'Foreign bank account report — required if combined foreign accounts exceed $10,000 at any point' });
-                    forms.push({ form: 'Form 8938 (FATCA)', country: '🇺🇸 US', desc: 'Statement of specified foreign financial assets — thresholds vary by filing status' });
-                }
-                deadlines.push({ date: 'April 15, 2026', item: 'US federal tax return & FBAR' });
-                deadlines.push({ date: 'October 15, 2026', item: 'Extended deadline (if filed extension)' });
+let currentStep = 0;
+let answers = {};
+
+function renderStep() {
+    const q = questions[currentStep];
+    const pct = Math.round(((currentStep + 1) / questions.length) * 100);
+    document.getElementById('step-label').textContent = `Step ${currentStep + 1} of ${questions.length}`;
+    document.getElementById('step-pct').textContent = pct + '%';
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('btn-prev').classList.toggle('hidden', currentStep === 0);
+    document.getElementById('btn-next').textContent = currentStep === questions.length - 1 ? '🔍 Analyze My Situation →' : 'Next →';
+
+    const area = document.getElementById('question-area');
+    let html = `<h3 class="text-xl font-semibold mb-2">${q.question}</h3>`;
+    if (q.subtitle) html += `<p class="text-gray-400 text-sm mb-6">${q.subtitle}</p>`;
+    else html += '<div class="mb-6"></div>';
+
+    if (q.type === 'select') {
+        html += '<div class="grid grid-cols-2 gap-3">';
+        q.options.forEach(opt => {
+            const val = typeof opt === 'string' ? opt : opt.value;
+            const label = typeof opt === 'string' ? opt : opt.label;
+            const sel = answers[q.id] === val;
+            html += `<button onclick="selectOpt('${q.id}','${val}')" class="opt-btn text-left px-4 py-3 rounded-lg border ${sel ? 'selected' : 'border-white/10 hover:border-white/20 text-gray-300'} transition text-sm">${label}</button>`;
+        });
+        html += '</div>';
+    } else if (q.type === 'multi') {
+        const selected = answers[q.id] || [];
+        html += '<div class="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[400px] overflow-y-auto pr-2">';
+        q.options.forEach(opt => {
+            const val = typeof opt === 'string' ? opt : opt.value;
+            const label = typeof opt === 'string' ? opt : opt.label;
+            const isSel = selected.includes(val);
+            html += `<button onclick="toggleOpt('${q.id}','${val}')" class="opt-btn text-left px-4 py-3 rounded-lg border ${isSel ? 'selected' : 'border-white/10 hover:border-white/20 text-gray-300'} transition text-sm flex items-center gap-2">
+                <span class="w-4 h-4 rounded border ${isSel ? 'border-green-500 bg-green-500' : 'border-white/20'} flex items-center justify-center text-xs flex-shrink-0">${isSel ? '✓' : ''}</span>
+                <span>${label}</span></button>`;
+        });
+        html += '</div>';
+    }
+    area.innerHTML = html;
+}
+
+function selectOpt(id, val) { answers[id] = val; renderStep(); }
+function toggleOpt(id, val) {
+    if (!answers[id]) answers[id] = [];
+    const idx = answers[id].indexOf(val);
+    if (idx > -1) answers[id].splice(idx, 1); else answers[id].push(val);
+    // Clicking 'none' clears others
+    if (val === 'none') answers[id] = ['none'];
+    else answers[id] = answers[id].filter(v => v !== 'none');
+    renderStep();
+}
+function nextStep() {
+    if (currentStep < questions.length - 1) { currentStep++; renderStep(); }
+    else generateResults();
+}
+function prevStep() {
+    if (currentStep > 0) { currentStep--; renderStep(); }
+}
+
+// ============ RESULTS ENGINE ============
+function generateResults() {
+    document.getElementById('quiz-container').classList.add('hidden');
+    const results = document.getElementById('results-area');
+    results.classList.remove('hidden');
+
+    const currentCode = answers.current_country || 'US';
+    const homeCode = answers.home_country || 'IN';
+    const otherCodes = (answers.other_countries || []).filter(c => c !== currentCode && c !== homeCode);
+    const allCodes = [currentCode, homeCode, ...otherCodes].filter((v,i,a) => a.indexOf(v) === i);
+    const incomes = answers.income_sources || [];
+    const assets = answers.foreign_assets || [];
+    const assetValue = answers.foreign_asset_value || 'none';
+    const daysPresent = answers.days_present || '270+';
+
+    const current = COUNTRIES[currentCode] || COUNTRIES.US;
+    const home = COUNTRIES[homeCode] || COUNTRIES.IN;
+
+    let findings = []; // {risk, category, title, desc, action, country}
+    let forms = []; // {form, desc, country, priority, deadline}
+    let deadlines = []; // {date, item, country, priority}
+    let treaties = []; // treaty results
+
+    // --- FILING OBLIGATIONS ---
+    // Current country
+    const currentForms = current.forms.filter(f => f.who === 'all');
+    currentForms.forEach(f => {
+        forms.push({ form: f.form, desc: f.desc, country: current.flag + ' ' + current.name, priority: 'high', deadline: current.filingDeadline });
+    });
+    if (current.filingDeadline) {
+        deadlines.push({ date: current.filingDeadline + ' (2026)', item: `${current.name} tax return`, country: current.flag, priority: 'high' });
+    }
+
+    // Home country filing (if different and has obligations)
+    if (currentCode !== homeCode) {
+        const homeHasObligation = incomes.some(i => ['rental', 'business', 'capital_gains'].includes(i)) ||
+                                   (homeCode === 'US' || homeCode === 'PH') || // US citizens & PH citizens taxed worldwide
+                                   assets.some(a => ['property', 'stocks', 'retirement'].includes(a));
+
+        if (homeHasObligation) {
+            const homeForms = home.forms.filter(f => f.who === 'all' || f.who === 'foreign_income');
+            homeForms.forEach(f => {
+                forms.push({ form: f.form, desc: f.desc, country: home.flag + ' ' + home.name, priority: 'medium', deadline: home.filingDeadline });
+            });
+            if (home.filingDeadline) {
+                deadlines.push({ date: home.filingDeadline + ' (2026)', item: `${home.name} tax return`, country: home.flag, priority: 'medium' });
+            }
+            findings.push({ risk: 'medium', category: 'Filing', title: `You likely need to file in ${home.name} too`,
+                desc: `Based on your income sources and assets in ${home.name}, you have filing obligations there.`,
+                action: `Prepare ${home.name} tax return alongside your ${current.name} return.`, country: home.flag });
+        }
+    }
+
+    // Foreign income forms
+    if (incomes.some(i => ['freelance', 'rental', 'business', 'investments'].includes(i))) {
+        const ftcForms = current.forms.filter(f => f.who === 'foreign_income');
+        ftcForms.forEach(f => {
+            forms.push({ form: f.form, desc: f.desc, country: current.flag + ' ' + current.name, priority: 'high', deadline: current.filingDeadline });
+        });
+        findings.push({ risk: 'medium', category: 'Foreign Income', title: 'Foreign Tax Credit / Deduction needed',
+            desc: `You have income from multiple countries. You need to claim foreign tax credits to avoid double taxation.`,
+            action: `File the foreign tax credit form in ${current.name} and claim taxes paid to other countries.`, country: current.flag });
+    }
+
+    // --- FBAR / FATCA / T1135 ---
+    const hasAccounts = assets.includes('bank_accounts');
+    const hasAnyForeignAssets = !assets.includes('none') && assets.length > 0;
+
+    // US-specific reporting
+    if (currentCode === 'US' || homeCode === 'US') {
+        if (hasAccounts && ['10k-50k', '50k-100k', '100k-250k', '250k+'].includes(assetValue)) {
+            forms.push({ form: 'FinCEN 114 (FBAR)', desc: 'Foreign bank accounts with aggregate balance >$10,000 at any point in the year', country: '🇺🇸 United States', priority: 'critical', deadline: 'April 15 (auto-ext to Oct 15)' });
+            findings.push({ risk: 'critical', category: 'FBAR', title: '⚠️ FBAR Filing Required',
+                desc: `Your foreign account balances likely exceed $10,000. Failure to file FinCEN 114 can result in penalties of $10,000+ per account per year.`,
+                action: 'File FinCEN 114 electronically through BSA E-Filing. Due April 15 with automatic extension to October 15.', country: '🇺🇸' });
+        }
+        if (hasAnyForeignAssets && ['50k-100k', '100k-250k', '250k+'].includes(assetValue)) {
+            forms.push({ form: 'Form 8938 (FATCA)', desc: 'Foreign financial assets >$50K (single) / $200K (married) at year end', country: '🇺🇸 United States', priority: 'critical', deadline: 'With tax return' });
+            findings.push({ risk: 'high', category: 'FATCA', title: 'FATCA Form 8938 Required',
+                desc: `Your foreign asset value exceeds the FATCA reporting threshold. This is separate from FBAR.`,
+                action: 'File Form 8938 with your 1040. Penalties: $10,000 + $10K/month after 90 days.', country: '🇺🇸' });
+        }
+        if (assets.includes('business_ownership')) {
+            forms.push({ form: 'Form 5471', desc: 'US person with >10% ownership in a foreign corporation', country: '🇺🇸 United States', priority: 'high', deadline: 'With tax return' });
+        }
+        if (assets.includes('trusts')) {
+            forms.push({ form: 'Form 3520', desc: 'Transactions with foreign trusts and receipt of certain foreign gifts', country: '🇺🇸 United States', priority: 'high', deadline: 'With tax return' });
+        }
+    }
+
+    // Canada-specific T1135
+    if (currentCode === 'CA' || homeCode === 'CA') {
+        if (hasAnyForeignAssets && ['100k-250k', '250k+'].includes(assetValue)) {
+            forms.push({ form: 'T1135', desc: 'Foreign property with total cost >CAD $100,000', country: '🇨🇦 Canada', priority: 'critical', deadline: 'With T1 return' });
+            findings.push({ risk: 'high', category: 'T1135', title: 'CRA Foreign Property Reporting Required',
+                desc: `Your foreign property cost likely exceeds CAD $100,000. T1135 is mandatory.`,
+                action: 'File T1135 with your T1 return. Penalty: $25/day (min $100, max $2,500).', country: '🇨🇦' });
+        }
+    }
+
+    // France foreign accounts
+    if (currentCode === 'FR') {
+        if (hasAccounts) {
+            forms.push({ form: 'Form 3916', desc: 'Declaration of foreign bank accounts — ALL accounts regardless of balance', country: '🇫🇷 France', priority: 'high', deadline: 'With tax return' });
+            findings.push({ risk: 'high', category: 'Foreign Accounts', title: 'French foreign account declaration required',
+                desc: `France requires declaration of ALL foreign bank accounts regardless of balance. Penalty: €1,500 per undeclared account.`,
+                action: 'File Form 3916 with your income tax return listing every foreign account.', country: '🇫🇷' });
+        }
+    }
+
+    // India Schedule FA
+    if (currentCode === 'IN' || (homeCode === 'IN' && hasAnyForeignAssets)) {
+        if (hasAnyForeignAssets) {
+            findings.push({ risk: 'high', category: 'Foreign Assets (India)', title: 'Schedule FA disclosure required in ITR',
+                desc: `Indian tax residents must disclose ALL foreign assets in Schedule FA of ITR-2/3. Non-disclosure can trigger Black Money Act penalties up to ₹10 lakh.`,
+                action: 'Report all foreign bank accounts, property, investments in Schedule FA when filing ITR-2 or ITR-3.', country: '🇮🇳' });
+        }
+    }
+
+    // --- TREATY ANALYSIS ---
+    if (currentCode !== homeCode) {
+        const tk = treatyKey(currentCode, homeCode);
+        if (tk && TREATIES[tk]) {
+            const t = TREATIES[tk];
+            treaties.push({ countries: `${current.flag} ${current.name} ↔ ${home.flag} ${home.name}`, data: t });
+
+            // Treaty form
+            if (currentCode === 'IN' || homeCode === 'IN') {
+                forms.push({ form: 'Form 67', desc: 'Claim DTAA relief in India — MUST be filed before or with ITR', country: '🇮🇳 India', priority: 'high', deadline: 'Before ITR due date' });
+            }
+            if (currentCode === 'US' || homeCode === 'US') {
+                forms.push({ form: 'Form 8833', desc: 'Treaty-based return position disclosure — required when claiming treaty benefits', country: '🇺🇸 United States', priority: 'medium', deadline: 'With tax return' });
             }
 
-            // Canada-specific
-            if (current === 'Canada') {
-                forms.push({ form: 'T1 General', country: '🇨🇦 Canada', desc: 'Canadian income tax return' });
-                if (assets.some(a => a.includes('Bank accounts') || a.includes('Foreign') || a.includes('Property'))) {
-                    forms.push({ form: 'Form T1135', country: '🇨🇦 Canada', desc: 'Foreign income verification — required if foreign property costs exceed CAD $100,000' });
-                }
-                if (incomes.includes('Rental income in home country') || incomes.includes('Business income in home country')) {
-                    forms.push({ form: 'Form T2209', country: '🇨🇦 Canada', desc: 'Federal foreign tax credits — claim taxes paid to other countries' });
-                }
-                deadlines.push({ date: 'April 30, 2026', item: 'Canadian T1 tax return' });
-                deadlines.push({ date: 'June 15, 2026', item: 'Self-employed filing deadline (interest accrues from Apr 30)' });
-            }
+            findings.push({ risk: 'low', category: 'Treaty', title: `Tax treaty exists between ${current.name} & ${home.name}`,
+                desc: `${t.article}. Withholding rates: Dividends ${t.dividends}, Interest ${t.interest}, Royalties ${t.royalties}.`,
+                action: 'File the appropriate treaty claim form to reduce or eliminate double taxation.', country: '🌍' });
+        } else {
+            findings.push({ risk: 'medium', category: 'Treaty', title: `No treaty found between ${current.name} & ${home.name}`,
+                desc: `We don't have a treaty on file for this pair. There may still be one — check with your country's tax authority.`,
+                action: 'Verify with a tax professional whether a bilateral treaty exists. Without one, you may face double taxation.', country: '⚠️' });
+        }
+    }
 
-            // India-specific (if home country)
-            if (home === 'India') {
-                if (incomes.includes('Rental income in home country') || incomes.includes('Business income in home country') || assets.includes('Foreign stocks or mutual funds')) {
-                    forms.push({ form: 'ITR-2 or ITR-3', country: '🇮🇳 India', desc: 'Indian income tax return — required if you have Indian-source income' });
-                    forms.push({ form: 'Form 67', country: '🇮🇳 India', desc: 'Claim Double Taxation Avoidance Agreement (DTAA) relief' });
-                    deadlines.push({ date: 'July 31, 2026', item: 'India ITR filing deadline' });
-                }
-                warnings.push('India taxes based on residency (182 days rule). If you visited India for 182+ days, you may be considered a resident for tax purposes.');
-            }
+    // --- RESIDENCY WARNING ---
+    if (['<30', '30-90'].includes(daysPresent)) {
+        findings.push({ risk: 'medium', category: 'Residency', title: 'You may not be a tax resident of your current country',
+            desc: `With fewer than 183 days of physical presence, many countries may not consider you a tax resident. This could mean you're taxed differently.`,
+            action: 'Use the Residency Test Calculator above to check your exact status. Consider consulting a professional.', country: '⚠️' });
+    }
 
-            // Treaty mention
-            let treatyNote = `A tax treaty likely exists between ${current} and ${home}. This may reduce or eliminate double taxation on certain income types.`;
+    // --- CRYPTO WARNING ---
+    if (incomes.includes('crypto')) {
+        findings.push({ risk: 'medium', category: 'Cryptocurrency', title: 'Cryptocurrency requires specific reporting',
+            desc: `Most countries now require reporting of crypto transactions. In the US, it's reported on Schedule D. In Canada, it's treated as a commodity (50% capital gains inclusion). India taxes crypto at 30% flat rate.`,
+            action: 'Track all crypto transactions. Use a crypto tax tool (Koinly, CoinTracker) to generate your tax report.', country: '🪙' });
+    }
 
-            let html = `
-                <div class="bg-dark-800/50 border border-brand-700/30 rounded-2xl p-8 glow">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-brand-900/40 flex items-center justify-center text-2xl">✅</div>
-                        <div>
-                            <h3 class="text-xl font-bold">Your Cross-Border Tax Checklist</h3>
-                            <p class="text-gray-400 text-sm">${current} ↔ ${home} · ${visa}</p>
-                        </div>
-                    </div>
+    // --- PENSION CROSS-BORDER ---
+    if (incomes.includes('pension')) {
+        findings.push({ risk: 'medium', category: 'Pension', title: 'Cross-border pension rules are complex',
+            desc: `Pension/retirement income may be taxable in both countries. Treaty provisions usually determine which country has primary taxation rights.`,
+            action: 'Check the treaty pension article. You may need to file in both countries but claim a credit in one.', country: '👴' });
+    }
 
-                    <div class="mb-8">
-                        <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">📋 Forms You Likely Need</h4>
-                        <div class="space-y-3">
-                            ${forms.map(f => `
-                                <div class="bg-dark-900/50 rounded-lg p-4 border border-white/5">
-                                    <div class="flex items-start justify-between">
-                                        <div>
-                                            <span class="font-mono text-brand-400 text-sm">${f.form}</span>
-                                            <span class="text-gray-500 text-xs ml-2">${f.country}</span>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-400 text-sm mt-1">${f.desc}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
+    // Sort findings by risk
+    const riskOrder = { critical: 0, high: 1, medium: 2, low: 3 };
+    findings.sort((a, b) => (riskOrder[a.risk] || 99) - (riskOrder[b.risk] || 99));
 
-                    <div class="mb-8">
-                        <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">📅 Key Deadlines</h4>
-                        <div class="space-y-2">
-                            ${deadlines.map(d => `
-                                <div class="flex items-center gap-4 bg-dark-900/50 rounded-lg p-3 border border-white/5">
-                                    <span class="text-brand-400 font-mono text-sm whitespace-nowrap">${d.date}</span>
-                                    <span class="text-gray-300 text-sm">${d.item}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
+    // Deduplicate forms
+    const seenForms = new Set();
+    forms = forms.filter(f => {
+        const k = f.form + '|' + f.country;
+        if (seenForms.has(k)) return false;
+        seenForms.add(k);
+        return true;
+    });
+    forms.sort((a, b) => {
+        const po = { critical: 0, high: 1, medium: 2, low: 3 };
+        return (po[a.priority] || 99) - (po[b.priority] || 99);
+    });
 
-                    <div class="mb-8">
-                        <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">🤝 Tax Treaty</h4>
-                        <p class="text-gray-400 text-sm bg-dark-900/50 rounded-lg p-4 border border-white/5">${treatyNote}</p>
-                    </div>
+    // Sort deadlines
+    deadlines.sort((a, b) => (a.priority === 'high' ? 0 : 1) - (b.priority === 'high' ? 0 : 1));
 
-                    ${warnings.length > 0 ? `
-                    <div class="mb-8">
-                        <h4 class="font-semibold text-lg mb-4 flex items-center gap-2">⚠️ Watch Out</h4>
-                        ${warnings.map(w => `<p class="text-yellow-400/80 text-sm bg-yellow-900/10 border border-yellow-700/20 rounded-lg p-4">${w}</p>`).join('')}
-                    </div>
-                    ` : ''}
+    // Risk score
+    const riskScores = { critical: 30, high: 15, medium: 5, low: 0 };
+    const totalRisk = findings.reduce((s, f) => s + (riskScores[f.risk] || 0), 0);
+    const riskLevel = totalRisk >= 50 ? 'High Complexity' : totalRisk >= 20 ? 'Moderate Complexity' : 'Low Complexity';
+    const riskColor = totalRisk >= 50 ? 'text-red-400' : totalRisk >= 20 ? 'text-yellow-400' : 'text-green-400';
+    const riskBg = totalRisk >= 50 ? 'bg-red-500/10 border-red-500/20' : totalRisk >= 20 ? 'bg-yellow-500/10 border-yellow-500/20' : 'bg-green-500/10 border-green-500/20';
 
-                    <div class="bg-brand-900/20 border border-brand-700/20 rounded-xl p-6 text-center">
-                        <p class="text-gray-300 mb-3">Want the <strong>full AI-powered analysis</strong> with specific treaty articles, exemption amounts, and step-by-step filing guides?</p>
-                        <button onclick="document.getElementById('waitlist-email').focus(); document.querySelector('[href=\\'#analyzer\\']').click();" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                            Join the Waitlist for Full Access →
-                        </button>
-                        <p class="text-xs text-gray-500 mt-2">Launching soon with AI-powered deep analysis</p>
-                    </div>
+    // CPA cost estimate
+    const complexityLevel = allCodes.length >= 3 ? 'complex' : incomes.length >= 4 ? 'complex' : incomes.length >= 2 ? 'medium' : 'simple';
+    const cpaCosts = { simple: 1500, medium: 2500, complex: 4000 };
+    const estCPACost = cpaCosts[complexityLevel] || 2500;
+
+    // Build HTML
+    let html = `<div class="space-y-6 fade-in">
+        <!-- Summary Header -->
+        <div class="glass rounded-2xl p-6 glow">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                <div>
+                    <h3 class="text-2xl font-bold mb-1">Your Cross-Border Tax Analysis</h3>
+                    <p class="text-gray-400 text-sm">${allCodes.map(c => COUNTRIES[c]?.flag + ' ' + COUNTRIES[c]?.name).join(' ↔ ')}</p>
                 </div>
-
-                <div class="text-center mt-6">
-                    <button onclick="resetQuiz()" class="text-gray-400 hover:text-white text-sm transition-colors">← Start over with different answers</button>
+                <div class="text-center p-4 rounded-xl ${riskBg} border">
+                    <div class="text-xs text-gray-400 mb-1">Complexity</div>
+                    <div class="text-lg font-bold ${riskColor}">${riskLevel}</div>
+                    <div class="text-xs text-gray-500">${findings.length} findings · ${forms.length} forms</div>
                 </div>
-            `;
-            results.innerHTML = html;
-            results.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function resetQuiz() {
-            currentStep = 0;
-            answers = {};
-            document.getElementById('quiz-container').classList.remove('hidden');
-            document.getElementById('results-area').classList.add('hidden');
-            renderStep();
-        }
-
-        function joinWaitlist() {
-            const email = document.getElementById('waitlist-email').value;
-            if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
-
-            // Store locally (replace with real backend later)
-            const waitlist = JSON.parse(localStorage.getItem('immigranttax_waitlist') || '[]');
-            waitlist.push({ email, timestamp: new Date().toISOString(), answers });
-            localStorage.setItem('immigranttax_waitlist', JSON.stringify(waitlist));
-
-            document.getElementById('waitlist-form').classList.add('hidden');
-            document.getElementById('waitlist-success').classList.remove('hidden');
-        }
-
-        // Initialize
-        renderStep();
-    </script>
-
-    <!-- Cross-Promotion: OpenSphere Labs -->
-    <section class="py-16 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-10">
-                <p class="text-sm text-gray-500 uppercase tracking-widest mb-2">Also from</p>
-                <a href="https://atalovesyou.github.io/opensphere-labs/" target="_blank" class="text-xl font-bold text-white hover:text-indigo-400 transition">OpenSphere Labs</a>
-                <p class="text-gray-400 text-sm mt-2">AI-powered micro-tools for freelancers &amp; small businesses</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <a href="https://atalovesyou.github.io/unslop-ai/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
-                    <div class="text-lg mb-1">🧹 UnSlop.ai</div>
-                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI slop detector & humanizer</div>
-                </a>
-                <a href="https://atalovesyou.github.io/ghosttracker/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
-                    <div class="text-lg mb-1">👻 GhostTracker</div>
-                    <div class="text-xs text-gray-400 group-hover:text-gray-300">Proposal analytics for freelancers</div>
-                </a>
-                <a href="https://atalovesyou.github.io/intakebot/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
-                    <div class="text-lg mb-1">💬 IntakeBot</div>
-                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI conversational client intake</div>
-                </a>
-                <a href="https://atalovesyou.github.io/reviewagent/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
-                    <div class="text-lg mb-1">⭐ ReviewAgent</div>
-                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI review management for SMBs</div>
-                </a>
-                <a href="https://atalovesyou.github.io/nameforge/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
-                    <div class="text-lg mb-1">✨ NameForge</div>
-                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI business name generator</div>
-                </a>
-                <a href="https://atalovesyou.github.io/contractpilot/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
-                    <div class="text-lg mb-1">📝 ContractPilot</div>
-                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI contracts for freelancers</div>
-                </a>
-            </div>
-                <a href="https://atalovesyou.github.io/invoicepilot/" target="_blank" class="glass rounded-xl p-4 hover:bg-white/5 transition group">
-                    <div class="text-lg mb-1">💰 InvoicePilot</div>
-                    <div class="text-xs text-gray-400 group-hover:text-gray-300">AI invoicing for freelancers</div>
-                </a>
-            <div class="text-center mt-8">
-                <a href="https://atalovesyou.github.io/opensphere-labs/" target="_blank" class="text-sm text-indigo-400 hover:text-indigo-300 transition">View all products →</a>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center p-3 bg-white/5 rounded-lg">
+                    <div class="text-2xl font-bold text-white">${allCodes.length}</div>
+                    <div class="text-xs text-gray-400">Countries</div>
+                </div>
+                <div class="text-center p-3 bg-white/5 rounded-lg">
+                    <div class="text-2xl font-bold text-white">${forms.length}</div>
+                    <div class="text-xs text-gray-400">Forms Needed</div>
+                </div>
+                <div class="text-center p-3 bg-white/5 rounded-lg">
+                    <div class="text-2xl font-bold text-white">${deadlines.length}</div>
+                    <div class="text-xs text-gray-400">Deadlines</div>
+                </div>
+                <div class="text-center p-3 bg-white/5 rounded-lg">
+                    <div class="text-2xl font-bold text-green-400">$${estCPACost.toLocaleString()}</div>
+                    <div class="text-xs text-gray-400">CPA Cost Saved</div>
+                </div>
             </div>
         </div>
-    </section>
 
-  <!-- Analytics (GoatCounter — privacy-friendly, no cookies) -->
-  <script data-goatcounter="https://opensphere-labs.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+        <!-- Action Buttons -->
+        <div class="flex gap-3">
+            <button onclick="exportPDF()" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl font-semibold transition">📄 Download PDF Report</button>
+            <button onclick="copyReport()" class="flex-1 glass hover:bg-white/5 text-white py-3 rounded-xl font-medium transition">📋 Copy Summary</button>
+        </div>`;
 
-  <!-- Real Email Capture (Formsubmit.co — free, no backend) -->
-  <script>
-    // Intercept all waitlist form submissions and forward to Formsubmit.co
-    (function() {
-      const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/atalashutosh@gmail.com';
-      const PRODUCT = 'immigranttax-ai';
-      
-      // Override any existing form submission to also send via Formsubmit
-      const origSubmit = window.submitWaitlist || window.handleWaitlist || window.joinWaitlist;
-      
-      function captureEmail(email) {
-        if (!email || !email.includes('@')) return;
-        
-        // Send to Formsubmit.co via AJAX (no redirect)
-        fetch(FORMSUBMIT_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            email: email,
-            product: PRODUCT,
-            source: 'waitlist',
-            timestamp: new Date().toISOString(),
-            _subject: PRODUCT + ' Waitlist Signup: ' + email,
-            _template: 'table'
-          })
-        }).catch(function() {});
-      }
-      
-      // Watch for form submissions on any email input
-      document.addEventListener('submit', function(e) {
-        const form = e.target;
-        const emailInput = form.querySelector('input[type="email"]');
-        if (emailInput && emailInput.value) {
-          captureEmail(emailInput.value);
-        }
-      });
-      
-      // Also intercept programmatic submissions
-      document.addEventListener('click', function(e) {
-        const btn = e.target;
-        if (btn.textContent && btn.textContent.includes('Waitlist')) {
-          setTimeout(function() {
-            const inputs = document.querySelectorAll('input[type="email"]');
-            inputs.forEach(function(input) {
-              if (input.value && input.value.includes('@')) {
-                captureEmail(input.value);
-              }
-            });
-          }, 100);
-        }
-      });
-    })();
-  </script>
+    // Findings
+    if (findings.length) {
+        html += `<div class="glass rounded-2xl p-6">
+            <h4 class="text-lg font-bold mb-4 flex items-center gap-2">🔍 Key Findings (${findings.length})</h4>
+            <div class="space-y-3">`;
+        findings.forEach(f => {
+            const rClass = f.risk === 'critical' ? 'risk-critical' : f.risk === 'high' ? 'risk-high' : f.risk === 'medium' ? 'risk-medium' : 'risk-low';
+            const badge = f.risk === 'critical' ? 'bg-red-500/20 text-red-400' : f.risk === 'high' ? 'bg-orange-500/20 text-orange-400' : f.risk === 'medium' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-green-500/20 text-green-400';
+            html += `<div class="bg-white/[0.02] rounded-lg p-4 ${rClass}">
+                <div class="flex items-start justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                        <span>${f.country}</span>
+                        <span class="font-semibold text-white text-sm">${esc(f.title)}</span>
+                    </div>
+                    <span class="text-xs px-2 py-0.5 rounded-full ${badge} whitespace-nowrap">${f.risk}</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-2">${esc(f.desc)}</p>
+                <p class="text-green-400 text-sm">→ ${esc(f.action)}</p>
+            </div>`;
+        });
+        html += '</div></div>';
+    }
+
+    // Forms
+    if (forms.length) {
+        html += `<div class="glass rounded-2xl p-6">
+            <h4 class="text-lg font-bold mb-4 flex items-center gap-2">📋 Forms You Need (${forms.length})</h4>
+            <div class="space-y-2">`;
+        forms.forEach(f => {
+            const pColor = f.priority === 'critical' ? 'text-red-400' : f.priority === 'high' ? 'text-orange-400' : 'text-yellow-400';
+            html += `<div class="bg-white/[0.02] rounded-lg p-3 flex items-start justify-between">
+                <div>
+                    <span class="font-mono text-green-400 text-sm">${esc(f.form)}</span>
+                    <span class="text-gray-500 text-xs ml-2">${esc(f.country)}</span>
+                    <p class="text-gray-400 text-xs mt-1">${esc(f.desc)}</p>
+                </div>
+                <div class="text-right flex-shrink-0 ml-4">
+                    <span class="text-xs ${pColor} font-medium uppercase">${f.priority}</span>
+                    ${f.deadline ? `<div class="text-xs text-gray-500 mt-1">${esc(f.deadline)}</div>` : ''}
+                </div>
+            </div>`;
+        });
+        html += '</div></div>';
+    }
+
+    // Deadlines
+    if (deadlines.length) {
+        html += `<div class="glass rounded-2xl p-6">
+            <h4 class="text-lg font-bold mb-4 flex items-center gap-2">📅 Key Deadlines</h4>
+            <div class="space-y-2">`;
+        deadlines.forEach(d => {
+            html += `<div class="bg-white/[0.02] rounded-lg p-3 flex items-center gap-4">
+                <span class="text-green-400 font-mono text-sm whitespace-nowrap">${esc(d.date)}</span>
+                <span class="text-gray-300 text-sm">${esc(d.country)} ${esc(d.item)}</span>
+            </div>`;
+        });
+        html += '</div></div>';
+    }
+
+    // Treaties
+    if (treaties.length) {
+        html += `<div class="glass rounded-2xl p-6">
+            <h4 class="text-lg font-bold mb-4 flex items-center gap-2">🤝 Applicable Tax Treaties</h4>`;
+        treaties.forEach(t => {
+            html += `<div class="bg-white/[0.02] rounded-xl p-4 mb-3">
+                <div class="font-semibold text-white mb-2">${esc(t.countries)}</div>
+                <div class="text-xs text-gray-500 mb-3">${esc(t.data.article)}</div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                    <div class="text-center p-2 bg-white/5 rounded-lg"><div class="text-xs text-gray-500">Dividends</div><div class="text-cyan-400 font-medium">${t.data.dividends}</div></div>
+                    <div class="text-center p-2 bg-white/5 rounded-lg"><div class="text-xs text-gray-500">Interest</div><div class="text-cyan-400 font-medium">${t.data.interest}</div></div>
+                    <div class="text-center p-2 bg-white/5 rounded-lg"><div class="text-xs text-gray-500">Royalties</div><div class="text-cyan-400 font-medium">${t.data.royalties}</div></div>
+                    <div class="text-center p-2 bg-white/5 rounded-lg"><div class="text-xs text-gray-500">Capital Gains</div><div class="text-cyan-400 font-medium text-xs">${t.data.capitalGains}</div></div>
+                </div>
+                ${t.data.pensions ? `<div class="mt-2 text-xs text-gray-400">Pensions: ${esc(t.data.pensions)}</div>` : ''}
+                ${t.data.students ? `<div class="text-xs text-gray-400">Students: ${esc(t.data.students)}</div>` : ''}
+                ${t.data.notes ? `<div class="mt-2 text-xs text-yellow-400/70">💡 ${esc(t.data.notes)}</div>` : ''}
+            </div>`;
+        });
+        html += '</div>';
+    }
+
+    // Country Details
+    html += `<div class="glass rounded-2xl p-6">
+        <h4 class="text-lg font-bold mb-4 flex items-center gap-2">🌍 Country Tax Systems</h4>
+        <div class="space-y-3">`;
+    allCodes.forEach(code => {
+        const c = COUNTRIES[code];
+        if (!c) return;
+        html += `<div class="bg-white/[0.02] rounded-lg p-4">
+            <div class="flex items-center gap-2 mb-2"><span class="text-lg">${c.flag}</span><span class="font-semibold text-white">${c.name}</span></div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+                <div><span class="text-gray-500">Tax Year:</span> <span class="text-gray-300">${c.taxYear}</span></div>
+                <div><span class="text-gray-500">System:</span> <span class="text-gray-300">${c.taxSystem}</span></div>
+                <div><span class="text-gray-500">Filing:</span> <span class="text-gray-300">${c.filingDeadline || 'N/A'}</span></div>
+                <div><span class="text-gray-500">Residency:</span> <span class="text-gray-300">${c.residencyRule}</span></div>
+            </div>
+        </div>`;
+    });
+    html += '</div></div>';
+
+    // Disclaimer
+    html += `<div class="glass rounded-2xl p-6 border-yellow-500/20 bg-yellow-500/5">
+        <p class="text-yellow-400 text-sm font-semibold mb-2">⚠️ Important Disclaimer</p>
+        <p class="text-gray-400 text-sm">This analysis is for informational purposes only and does not constitute tax advice. Tax laws change frequently and individual circumstances vary. Consult a qualified cross-border tax professional for advice specific to your situation. ImmigrantTax.ai provides general guidance based on publicly available tax rules and treaty information.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="glass rounded-2xl p-8 text-center glow">
+        <h4 class="text-xl font-bold mb-2">Want deeper AI-powered analysis?</h4>
+        <p class="text-gray-400 mb-4 text-sm">Step-by-step filing guides, form pre-fill, treaty optimization, and estimated tax liability calculations.</p>
+        <a href="#waitlist-section" class="inline-block bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-xl font-semibold transition">Join Waitlist for Full Access →</a>
+    </div>
+
+    <div class="text-center">
+        <button onclick="resetAnalysis()" class="text-gray-400 hover:text-white text-sm transition">← Start over with different answers</button>
+    </div>
+    </div>`;
+
+    results.innerHTML = html;
+    results.scrollIntoView({ behavior: 'smooth' });
+
+    // Store for PDF export
+    window._lastAnalysis = { findings, forms, deadlines, treaties, allCodes, riskLevel, estCPACost, current, home };
+}
+
+function resetAnalysis() {
+    currentStep = 0;
+    answers = {};
+    document.getElementById('quiz-container').classList.remove('hidden');
+    document.getElementById('results-area').classList.add('hidden');
+    renderStep();
+    document.getElementById('analyzer').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ============ PDF EXPORT ============
+function exportPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const data = window._lastAnalysis;
+    if (!data) return;
+
+    const marginL = 20, marginR = 190;
+    let y = 25;
+
+    function checkPage(needed) {
+        if (y + needed > 275) { doc.addPage(); y = 25; }
+    }
+
+    // Header
+    doc.setFillColor(10, 10, 20);
+    doc.rect(0, 0, 210, 40, 'F');
+    doc.setTextColor(34, 197, 94);
+    doc.setFontSize(20);
+    doc.text('ImmigrantTax.ai', marginL, 18);
+    doc.setTextColor(200, 200, 200);
+    doc.setFontSize(10);
+    doc.text('Cross-Border Tax Analysis Report', marginL, 26);
+    doc.setFontSize(8);
+    doc.text(`Generated: ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`, marginL, 33);
+    doc.text(`Countries: ${data.allCodes.map(c => COUNTRIES[c]?.name).join(' ↔ ')}`, marginL + 70, 33);
+    y = 50;
+
+    // Summary
+    doc.setFontSize(14);
+    doc.setTextColor(34, 197, 94);
+    doc.text('Summary', marginL, y);
+    y += 8;
+    doc.setFontSize(10);
+    doc.setTextColor(80, 80, 80);
+    doc.text(`Complexity: ${data.riskLevel}`, marginL + 5, y); y += 5;
+    doc.text(`Findings: ${data.findings.length}`, marginL + 5, y); y += 5;
+    doc.text(`Forms Required: ${data.forms.length}`, marginL + 5, y); y += 5;
+    doc.text(`Estimated CPA Cost: $${data.estCPACost.toLocaleString()}`, marginL + 5, y); y += 10;
+
+    // Findings
+    if (data.findings.length) {
+        checkPage(15);
+        doc.setFontSize(14);
+        doc.setTextColor(34, 197, 94);
+        doc.text('Key Findings', marginL, y);
+        y += 8;
+        data.findings.forEach((f, i) => {
+            checkPage(20);
+            doc.setFontSize(10);
+            doc.setTextColor(40, 40, 40);
+            const titleLines = doc.splitTextToSize(`${i+1}. [${f.risk.toUpperCase()}] ${f.title}`, 165);
+            doc.text(titleLines, marginL + 5, y);
+            y += titleLines.length * 5;
+            doc.setFontSize(8);
+            doc.setTextColor(100, 100, 100);
+            const descLines = doc.splitTextToSize(f.desc, 160);
+            doc.text(descLines, marginL + 10, y);
+            y += descLines.length * 4;
+            doc.setTextColor(34, 150, 94);
+            const actionLines = doc.splitTextToSize('→ ' + f.action, 160);
+            doc.text(actionLines, marginL + 10, y);
+            y += actionLines.length * 4 + 4;
+        });
+    }
+
+    // Forms
+    if (data.forms.length) {
+        checkPage(15);
+        doc.setFontSize(14);
+        doc.setTextColor(34, 197, 94);
+        doc.text('Forms Required', marginL, y);
+        y += 8;
+        data.forms.forEach(f => {
+            checkPage(12);
+            doc.setFontSize(9);
+            doc.setTextColor(40, 40, 40);
+            doc.text(`${f.form} (${f.country})`, marginL + 5, y);
+            y += 4;
+            doc.setFontSize(8);
+            doc.setTextColor(100, 100, 100);
+            const lines = doc.splitTextToSize(f.desc, 160);
+            doc.text(lines, marginL + 10, y);
+            y += lines.length * 4;
+            if (f.deadline) {
+                doc.setTextColor(34, 150, 94);
+                doc.text(`Deadline: ${f.deadline}`, marginL + 10, y);
+                y += 4;
+            }
+            y += 2;
+        });
+    }
+
+    // Deadlines
+    if (data.deadlines.length) {
+        checkPage(15);
+        doc.setFontSize(14);
+        doc.setTextColor(34, 197, 94);
+        doc.text('Key Deadlines', marginL, y);
+        y += 8;
+        data.deadlines.forEach(d => {
+            checkPage(8);
+            doc.setFontSize(9);
+            doc.setTextColor(40, 40, 40);
+            doc.text(`${d.date} — ${d.country} ${d.item}`, marginL + 5, y);
+            y += 6;
+        });
+    }
+
+    // Treaties
+    if (data.treaties.length) {
+        checkPage(20);
+        y += 5;
+        doc.setFontSize(14);
+        doc.setTextColor(34, 197, 94);
+        doc.text('Tax Treaties', marginL, y);
+        y += 8;
+        data.treaties.forEach(t => {
+            checkPage(20);
+            doc.setFontSize(10);
+            doc.setTextColor(40, 40, 40);
+            doc.text(t.countries, marginL + 5, y); y += 5;
+            doc.setFontSize(8);
+            doc.setTextColor(100, 100, 100);
+            doc.text(t.data.article, marginL + 10, y); y += 5;
+            doc.text(`Dividends: ${t.data.dividends} | Interest: ${t.data.interest} | Royalties: ${t.data.royalties}`, marginL + 10, y); y += 5;
+            doc.text(`Capital Gains: ${t.data.capitalGains}`, marginL + 10, y); y += 5;
+            if (t.data.notes) {
+                const noteLines = doc.splitTextToSize('Note: ' + t.data.notes, 160);
+                doc.text(noteLines, marginL + 10, y);
+                y += noteLines.length * 4;
+            }
+            y += 3;
+        });
+    }
+
+    // Disclaimer
+    checkPage(20);
+    y += 5;
+    doc.setFontSize(7);
+    doc.setTextColor(150, 150, 150);
+    const discLines = doc.splitTextToSize('DISCLAIMER: This report is for informational purposes only and does not constitute tax advice. Tax laws change frequently and individual circumstances vary. Consult a qualified cross-border tax professional for advice specific to your situation.', 170);
+    doc.text(discLines, marginL, y);
+
+    // Page numbers
+    const pages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= pages; i++) {
+        doc.setPage(i);
+        doc.setFontSize(7);
+        doc.setTextColor(180, 180, 180);
+        doc.text(`ImmigrantTax.ai — Page ${i} of ${pages} — Generated ${new Date().toISOString().split('T')[0]}`, 105, 290, { align: 'center' });
+    }
+
+    doc.save('ImmigrantTax-Analysis.pdf');
+}
+
+function copyReport() {
+    const data = window._lastAnalysis;
+    if (!data) return;
+    let text = `IMMIGRANTTAX.AI — CROSS-BORDER TAX ANALYSIS\n`;
+    text += `Generated: ${new Date().toLocaleDateString()}\n`;
+    text += `Countries: ${data.allCodes.map(c => COUNTRIES[c]?.name).join(' ↔ ')}\n`;
+    text += `Complexity: ${data.riskLevel}\n\n`;
+
+    text += `KEY FINDINGS\n${'='.repeat(40)}\n`;
+    data.findings.forEach((f, i) => {
+        text += `${i+1}. [${f.risk.toUpperCase()}] ${f.title}\n   ${f.desc}\n   → ${f.action}\n\n`;
+    });
+
+    text += `FORMS REQUIRED\n${'='.repeat(40)}\n`;
+    data.forms.forEach(f => {
+        text += `• ${f.form} (${f.country}) — ${f.desc}${f.deadline ? ` [Due: ${f.deadline}]` : ''}\n`;
+    });
+
+    text += `\nDEADLINES\n${'='.repeat(40)}\n`;
+    data.deadlines.forEach(d => {
+        text += `• ${d.date} — ${d.item}\n`;
+    });
+
+    text += '\nDISCLAIMER: Not tax advice. Consult a qualified professional.';
+
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const orig = btn.textContent;
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+
+// ============ RESIDENCY CALCULATORS ============
+function calcSPT() {
+    const y0 = parseInt(document.getElementById('spt-y0').value) || 0;
+    const y1 = parseInt(document.getElementById('spt-y1').value) || 0;
+    const y2 = parseInt(document.getElementById('spt-y2').value) || 0;
+
+    const weighted = y0 + Math.floor(y1 / 3) + Math.floor(y2 / 6);
+    const meetsTest = y0 >= 31 && weighted >= 183;
+    const result = document.getElementById('spt-result');
+    result.classList.remove('hidden');
+
+    if (meetsTest) {
+        result.className = 'p-4 rounded-lg text-sm bg-red-500/10 border border-red-500/20';
+        result.innerHTML = `<div class="font-semibold text-red-400 mb-2">⚠️ You MEET the Substantial Presence Test</div>
+            <p class="text-gray-300">Weighted days: <strong>${weighted}</strong> (need 183+) with <strong>${y0}</strong> days this year (need 31+)</p>
+            <p class="text-gray-400 text-xs mt-2">You are likely considered a <strong>US tax resident</strong> for federal purposes. You must file Form 1040 and report worldwide income. You may be able to claim a "closer connection" exception (Form 8840) or treaty tie-breaker if you maintain stronger ties to another country.</p>`;
+    } else {
+        result.className = 'p-4 rounded-lg text-sm bg-green-500/10 border border-green-500/20';
+        result.innerHTML = `<div class="font-semibold text-green-400 mb-2">✅ You do NOT meet the Substantial Presence Test</div>
+            <p class="text-gray-300">Weighted days: <strong>${weighted}</strong> (need 183+)${y0 < 31 ? `, current year: <strong>${y0}</strong> (need 31+)` : ''}</p>
+            <p class="text-gray-400 text-xs mt-2">You are likely a <strong>nonresident alien</strong> for US tax purposes. You file Form 1040-NR and only report US-source income. Note: Green card holders are always residents regardless of this test.</p>`;
+    }
+}
+
+function calc183() {
+    const country = document.getElementById('day183-country').value;
+    const days = parseInt(document.getElementById('day183-days').value) || 0;
+    const hasHome = document.getElementById('day183-home').value === 'yes';
+    const c = COUNTRIES[country];
+    const result = document.getElementById('day183-result');
+    result.classList.remove('hidden');
+
+    const is183 = days >= 183;
+    const isResident = is183 || hasHome;
+
+    if (isResident) {
+        result.className = 'p-4 rounded-lg text-sm bg-yellow-500/10 border border-yellow-500/20';
+        result.innerHTML = `<div class="font-semibold text-yellow-400 mb-2">⚠️ Likely a tax resident of ${c?.name || country}</div>
+            <p class="text-gray-300">${days} days present${hasHome ? ' + permanent home' : ''}</p>
+            <p class="text-gray-400 text-xs mt-2">Under ${c?.name || country}'s rules (${c?.residencyRule || '183-day rule'}), you are likely a <strong>tax resident</strong> and must report worldwide income there.</p>`;
+    } else {
+        result.className = 'p-4 rounded-lg text-sm bg-green-500/10 border border-green-500/20';
+        result.innerHTML = `<div class="font-semibold text-green-400 mb-2">✅ Likely NOT a tax resident of ${c?.name || country}</div>
+            <p class="text-gray-300">${days} days present (need 183+), no permanent home</p>
+            <p class="text-gray-400 text-xs mt-2">You are likely a <strong>non-resident</strong> for tax purposes. You only need to report income sourced from ${c?.name || country}. Note: other factors (center of vital interests, nationality) may apply.</p>`;
+    }
+}
+
+// ============ TREATY LOOKUP ============
+function lookupTreaty() {
+    const a = document.getElementById('treaty-a').value;
+    const b = document.getElementById('treaty-b').value;
+    const result = document.getElementById('treaty-result');
+    result.classList.remove('hidden');
+
+    if (a === b) {
+        result.innerHTML = '<p class="text-yellow-400 text-sm">Please select two different countries.</p>';
+        return;
+    }
+
+    const tk = treatyKey(a, b);
+    const cA = COUNTRIES[a], cB = COUNTRIES[b];
+
+    if (tk && TREATIES[tk]) {
+        const t = TREATIES[tk];
+        result.innerHTML = `<div class="bg-white/[0.02] rounded-xl p-5 fade-in">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-green-400 text-lg">✅</span>
+                <span class="font-semibold text-white">Treaty Found</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-4">${esc(t.article)}</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                <div class="text-center p-3 bg-white/5 rounded-lg"><div class="text-xs text-gray-500">Dividends</div><div class="text-cyan-400 font-bold">${t.dividends}</div></div>
+                <div class="text-center p-3 bg-white/5 rounded-lg"><div class="text-xs text-gray-500">Interest</div><div class="text-cyan-400 font-bold">${t.interest}</div></div>
+                <div class="text-center p-3 bg-white/5 rounded-lg"><div class="text-xs text-gray-500">Royalties</div><div class="text-cyan-400 font-bold">${t.royalties}</div></div>
+                <div class="text-center p-3 bg-white/5 rounded-lg"><div class="text-xs text-gray-500">Capital Gains</div><div class="text-cyan-400 font-bold text-xs">${t.capitalGains}</div></div>
+            </div>
+            <div class="space-y-1 text-sm">
+                ${t.pensions ? `<p class="text-gray-400"><span class="text-gray-500">Pensions:</span> ${esc(t.pensions)}</p>` : ''}
+                ${t.students ? `<p class="text-gray-400"><span class="text-gray-500">Students:</span> ${esc(t.students)}</p>` : ''}
+            </div>
+            ${t.notes ? `<div class="mt-3 p-3 bg-yellow-500/5 border border-yellow-500/10 rounded-lg text-xs text-yellow-400/80">💡 ${esc(t.notes)}</div>` : ''}
+        </div>`;
+    } else {
+        result.innerHTML = `<div class="bg-white/[0.02] rounded-xl p-5 fade-in">
+            <div class="flex items-center gap-2 mb-2">
+                <span class="text-yellow-400 text-lg">⚠️</span>
+                <span class="font-semibold text-white">No Treaty Found in Our Database</span>
+            </div>
+            <p class="text-gray-400 text-sm">We don't have the ${cA?.name} ↔ ${cB?.name} treaty on file. This doesn't mean one doesn't exist — our database covers the most common immigrant corridors.</p>
+            <p class="text-gray-400 text-sm mt-2">Check your countries' tax authority websites or the OECD treaty database for the latest information.</p>
+        </div>`;
+    }
+}
+
+// ============ COST SAVINGS CALCULATOR ============
+function calcCostSavings() {
+    const countries = parseInt(document.getElementById('cost-countries').value) || 2;
+    const complexity = document.getElementById('cost-complexity').value;
+
+    const cpaCosts = { simple: { 2: 1500, 3: 2500, 4: 4000 }, medium: { 2: 2500, 3: 3500, 4: 5000 }, complex: { 2: 4000, 3: 5500, 4: 8000 } };
+    const softwareCosts = { simple: 150, medium: 200, complex: 300 };
+
+    const cpa = cpaCosts[complexity]?.[countries] || 2500;
+    const software = (softwareCosts[complexity] || 200) * countries;
+
+    document.getElementById('cost-cpa').textContent = '$' + cpa.toLocaleString();
+    document.getElementById('cost-software').textContent = '$' + software.toLocaleString();
+    document.getElementById('cost-savings').textContent = '$' + cpa.toLocaleString();
+}
+
+// ============ UTILITIES ============
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// Initialize
+renderStep();
+calcCostSavings();
+</script>
+
+<!-- Formsubmit.co robots.txt -->
+<link rel="robots" href="/robots.txt">
+<!-- GoatCounter -->
+<script data-goatcounter="https://opensphere.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<noscript><img src="https://opensphere.goatcounter.com/count?p=/immigranttax-ai" alt=""></noscript>
 </body>
 </html>
